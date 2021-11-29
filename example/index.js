@@ -1,3 +1,3 @@
-const foobar = require("../svelte-layout-editor/index.js")  
+const test = require("./node_modules/svelte-layout-editor/index.js")  
 
-console.log(foobar);
+console.log(test.foobar());
