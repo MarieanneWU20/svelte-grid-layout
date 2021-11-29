@@ -1,2 +1,2 @@
 
-exports.foobar = () => { return "Hello from svelte-layout-editor!" };
+exports.foobar = () => { return " from svelte-layout-editor!" };
