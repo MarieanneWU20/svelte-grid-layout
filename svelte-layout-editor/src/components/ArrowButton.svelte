@@ -1,10 +1,10 @@
 
 <style>
     button {
-        border: blue;
+        border: whitesmoke solid 1px;
         border-radius: 5%;
-        background-color: whitesmoke;
-        color: blue;
+        background-color: gray;
+        color: black;
         margin: 2%;
     }
 </style>

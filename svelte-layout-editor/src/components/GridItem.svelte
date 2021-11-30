@@ -3,12 +3,12 @@
 </script>
 <style>
     div {
-        border: lightblue solid 1px;
+        border: white solid 1px;
         border-radius: 5%;
         margin: 1%;
         flex-grow: 1;
         background-color: black;
-        color: lightblue;
+        color: whitesmoke;
     }
 </style>
 

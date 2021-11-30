@@ -5,7 +5,7 @@
 
 <main>
 	<h1>Hello {name}!</h1>
-	<p>This is Layout Editor.</p>
+	<p>This is from Layout Editor.</p>
     <Grid/>
 </main>
 

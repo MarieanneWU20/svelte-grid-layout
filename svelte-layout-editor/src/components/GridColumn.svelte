@@ -6,10 +6,10 @@
     div {
         /* display: flex; */
         flex-grow: 1;
-        border: red solid 1px;
+        border: gray solid 1px;
         border-radius: 5%;
-        background-color: whitesmoke;
-        color: red;
+        background-color: gray;
+        color: white;
         margin: 1%;
     }
 </style>

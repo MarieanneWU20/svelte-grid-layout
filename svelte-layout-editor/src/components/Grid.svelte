@@ -4,11 +4,11 @@
 
 <style>
     div {
-        border: yellow solid 1px;
+        border: black solid 1px;
         border-radius: 5%;
         /* margin: 1%;
         flex-grow: 1; */
-        color: yellow;
+        color: whitesmoke;
         background-color: black;
     }
 </style>
