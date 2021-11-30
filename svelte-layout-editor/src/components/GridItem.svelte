@@ -9,6 +9,7 @@
         flex-grow: 1;
         background-color: black;
         color: whitesmoke;
+        padding: 0.5em;
     }
 </style>
 

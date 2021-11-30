@@ -6,6 +6,7 @@
         background-color: gray;
         color: black;
         margin: 2%;
+        padding: 0.4em;
     }
 </style>
 

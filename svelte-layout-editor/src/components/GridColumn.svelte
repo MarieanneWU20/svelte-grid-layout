@@ -11,6 +11,7 @@
         background-color: gray;
         color: white;
         margin: 1%;
+        padding: 0.4em;
     }
 </style>
 
