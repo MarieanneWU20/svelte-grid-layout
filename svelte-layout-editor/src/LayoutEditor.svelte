@@ -1,17 +1,17 @@
 <script>
-    import Grid from "./components/Grid.svelte";
-	//export let name;
-	import UpArrow from "./components/UpArrow.svelte";
-	import DownArrow from "./components/DownArrow.svelte";
+    // import Grid from "./components/Grid.svelte";
+	// export let name;
+	// import UpArrow from "./components/UpArrow.svelte";
+	// import DownArrow from "./components/DownArrow.svelte";
 	import GridTest from "./components/GridTest.svelte";
 </script>
 
 <main>
-	<UpArrow />
+	<!-- <UpArrow /> -->
 	<!--<h1>Hello {name}!</h1>
 	<p>This is from Layout Editor.</p>-->
-    <Grid/>
-	<DownArrow />
+    <!-- <Grid/> -->
+	<!-- <DownArrow /> -->
 	<GridTest />
 </main>
 

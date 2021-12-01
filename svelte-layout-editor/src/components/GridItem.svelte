@@ -1,19 +1,32 @@
 <script>
     import ArrowButton from "./ArrowButton.svelte";
+    export let gridArea;
 </script>
+
 <style>
     div {
-        border: white solid 1px;
-        border-radius: 5%;
-        margin: 1%;
-        flex-grow: 1;
-        background-color: black;
-        color: whitesmoke;
-        padding: 0.5em;
+      width: auto;
+      border-radius: 20px;
+      padding: 5px;
+      background-color: #FFFFFF;
+      text-align: center;
+      vertical-align: middle;
+  }
+  @media screen and (min-width: 480px){
+  div{
+      border-radius: 25px;  
+      padding: 10px;
     }
+  }
+  @media screen and (min-width: 768px){
+   div{
+       border-radius: 30px;  
+       padding: 10px;
+    }
+  }
 </style>
 
-<div>
-    <h3>Hello from GridItem!</h3>
-    <ArrowButton/>
+<div style="grid-area: {gridArea};">
+    <slot/>
+    <!-- <ArrowButton/> -->
 </div>

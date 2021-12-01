@@ -3,6 +3,7 @@
     import LeftArrow from './LeftArrow.svelte';
     import RightArrow from './RightArrow.svelte';
     import DownArrow from './DownArrow.svelte';
+    import GridItem from "./GridItem.svelte";
   </script>
   
  <div class="test-editor">
@@ -10,10 +11,17 @@
   <div class="row">
       <LeftArrow />
       <div class="container">
-          <div class="section" style="grid-area: 1 / 1 / 2 / 2;">1</div>
+          <GridItem gridArea="1 / 1 / 2 / 2">1</GridItem>
+
+          <GridItem gridArea="1 / 2 / 2 / 3">2</GridItem>
+
+          <GridItem gridArea="2 / 1 / 3 / 2">3</GridItem>
+
+          <GridItem gridArea="2 / 2 / 3 / 3">4</GridItem>
+          <!-- <div class="section" style="grid-area: 1 / 1 / 2 / 2;">1</div>
           <div class="section" style="grid-area: 1 / 2 / 2 / 3;">2</div>
           <div class="section" style="grid-area: 2 / 1 / 3 / 2;">3</div>
-          <div class="section" style="grid-area: 2 / 2 / 3 / 3;">4</div>
+          <div class="section" style="grid-area: 2 / 2 / 3 / 3;">4</div> -->
       </div>
       <RightArrow />
     </div>
@@ -38,32 +46,16 @@
       grid-auto-rows: 1fr 1fr;
       gap: 0.6rem 0.6rem;
   }
-  .container div {
-      width: auto;
-      border-radius: 20px;
-      padding: 5px;
-      background-color: #FFFFFF;
-      text-align: center;
-      vertical-align: middle;
-  }
   @media screen and (min-width: 480px){
   .container{
       padding: 20px;   
       gap: 1rem 1rem;
       height: 75vh;  
    }
-   .container div{
-      border-radius: 25px;  
-      padding: 10px;
-    }
   }
   @media screen and (min-width: 768px){
    .container{
       height: 100vh;  
    }
-   .container div{
-       border-radius: 30px;  
-       padding: 10px;
-    }
   }
   </style>
