@@ -1,3 +1,6 @@
+
+//TODO: DELETE ??
+
 <script>
     import GridItem from "./GridItem.svelte";
 </script>
