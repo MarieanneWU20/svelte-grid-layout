@@ -1,10 +1,12 @@
 
-// import LayoutEditor from "./src/LayoutEditor.svelte";
+//TODO: DELETE ??
 
-// export default LayoutEditor 
-// = new LayoutEditor({
-//     target: document.body,
-//     props: {
-//         name: ''
-//     }
-// });
+import LayoutEditor from "./src/LayoutEditor.svelte";
+
+export default LayoutEditor 
+= new LayoutEditor({
+    target: document.body,
+    props: {
+        name: ''
+    }
+});

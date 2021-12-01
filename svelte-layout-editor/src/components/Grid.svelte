@@ -3,7 +3,7 @@
     import LeftArrow from './LeftArrow.svelte';
     import RightArrow from './RightArrow.svelte';
     import DownArrow from './DownArrow.svelte';
-    import GridItem from "./GridItem.svelte";
+    import GridItem from './GridItem.svelte';
   </script>
   
  <div class="test-editor">

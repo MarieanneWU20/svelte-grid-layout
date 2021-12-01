@@ -26,7 +26,7 @@
   }
 </style>
 
-<div style="grid-area: {gridArea};">
+<div class="section" style="grid-area: {gridArea};">
     <slot/>
     <!-- <ArrowButton/> -->
 </div>
