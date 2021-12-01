@@ -17,6 +17,7 @@
 
 <style>
 	main {
+		width: 90%;
 		text-align: center;
 		padding: 1em;
 		/*max-width: 240px;*/

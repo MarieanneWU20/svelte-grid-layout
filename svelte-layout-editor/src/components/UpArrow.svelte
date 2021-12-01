@@ -1,12 +1,17 @@
 <script>
-    let src = "images/uparrow.svg";
+  
 </script>
 
 <div class="up-arrow">
-    <button ><img class="svgupdown" {src} alt="" /></button>
+    <button >UpArrow</button>
 </div>
 
 <style>
+button {
+    border: none;
+    background-color: #fff;
+	cursor: pointer;
+}
 .up-arrow {
     display: flex;
     justify-content: center;

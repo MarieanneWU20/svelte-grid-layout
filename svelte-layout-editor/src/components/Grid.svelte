@@ -1,7 +1,5 @@
 <script>
     import GridRow from "./GridRow.svelte";
-    import LeftArr from "./LeftArr.svelte";
-    import RightArr from "./RightArr.svelte";
 </script>
 
 <style>
@@ -17,9 +15,7 @@
 </style>
 
 <div>
-    <LeftArr />
     <h1>Hello from Grid!</h1>
     <GridRow/>
     <GridRow/>
-    <RightArr />
 </div>

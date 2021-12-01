@@ -1,12 +1,17 @@
 <script>
-    let src = "images/leftarrow.svg";
+   
 </script>
 
 <div class="left-arrow">
-    <button><img class="svg" {src} alt="" /></button>
+    <button>LeftArrow</button>
 </div>
 
 <style>
+button {
+    border: none;
+    background-color: #fff;
+	cursor: pointer;
+}
 .left-arrow {
     /*float: left;
     display: inline-flex;

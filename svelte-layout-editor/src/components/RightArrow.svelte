@@ -1,13 +1,17 @@
 <script>
-    let src = "images/rightarrow.svg";
+  
 </script>
 
 <div class="right-arrow">
-    
-    <button ><img class="svg" {src} alt="" /></button>
+    <button >RightArrow</button>
 </div>
 
 <style>
+button {
+    border: none;
+    background-color: #fff;
+	cursor: pointer;
+}
 .right-arrow {
     float: right;
     /*display: inline-flex;
