@@ -1,5 +1,5 @@
 <script>
-    import ArrowButton from "./ArrowButton.svelte";
+    // import ArrowButton from "./ArrowButton.svelte";
     export let gridArea;
 </script>
 
