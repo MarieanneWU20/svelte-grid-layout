@@ -1,6 +1,8 @@
 <script>
     import GridColumn from "./GridColumn.svelte";
     import GridItem from "./GridItem.svelte";
+    //import LeftArrow from "./LeftArrow.svelte";
+   // import RightArrow from "./RightArrow.svelte";
 </script>
 
 <style>
@@ -11,6 +13,7 @@
     background-color: whitesmoke;
     color: black;
     margin: 1%;
+    padding: 0.4em;
     }
 </style>
 <div>

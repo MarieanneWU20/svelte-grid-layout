@@ -10,6 +10,7 @@
         flex-grow: 1; */
         color: whitesmoke;
         background-color: black;
+        padding: 0.4em;
     }
 </style>
 
