@@ -1,8 +1,7 @@
 <script>
     import GridColumn from "./GridColumn.svelte";
     import GridItem from "./GridItem.svelte";
-    //import LeftArrow from "./LeftArrow.svelte";
-   // import RightArrow from "./RightArrow.svelte";
+
 </script>
 
 <style>

@@ -8,8 +8,6 @@
 
 <main>
 	<UpArrow />
-	<!--<h1>Hello {name}!</h1>
-	<p>This is from Layout Editor.</p>-->
     <Grid/>
 	<DownArrow />
 	<GridTest />

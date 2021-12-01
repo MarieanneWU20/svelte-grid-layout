@@ -1,13 +1,14 @@
 
+<button> 
+    <slot />
+</button>
+
 <style>
-    button {
-        border: whitesmoke solid 1px;
-        border-radius: 5%;
-        background-color: gray;
-        color: black;
-        margin: 2%;
-        padding: 0.4em;
+    /* valde att behålla arrowbutton*/
+    button { 
+        border: none;
+        background-color: #fff;
+	    cursor: pointer;
     }
 </style>
 
-<button> Hello from ArrowButton </button>
