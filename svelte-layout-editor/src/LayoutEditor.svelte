@@ -22,10 +22,10 @@
 </script>
 
 <main>
-	<UpArrow />
+	<!-- <UpArrow /> -->
     <Grid/>
-	<DownArrow />
-	<GridTest />
+	<!-- <DownArrow />
+	<GridTest /> -->
 </main>
 
 <style>
