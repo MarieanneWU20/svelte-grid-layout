@@ -2,10 +2,7 @@ import LayoutEditor  from "../node_modules/svelte-layout-editor/src/LayoutEditor
 
 const app = new LayoutEditor({
 	target: document.body,
-	// props: {
-	// 	name: 'example'
 
-	// }
 });
 
 export default app;
