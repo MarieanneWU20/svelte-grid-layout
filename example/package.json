@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "sirv-cli": "^1.0.0"
+    "link": "^0.1.5",
+    "sirv-cli": "^1.0.0",
+    "svelte-layout-editor": "file:../svelte-layout-editor"
   },
   "devDependencies": {
     "rollup": "^2.60.1",
