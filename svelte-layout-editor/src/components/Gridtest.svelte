@@ -37,6 +37,7 @@
       grid-auto-columns: 1fr 1fr; 
       grid-auto-rows: 1fr 1fr;
       gap: 0.6rem 0.6rem;
+      color:#062d70;
   }
   .container div {
       width: auto;

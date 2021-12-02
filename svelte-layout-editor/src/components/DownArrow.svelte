@@ -1,17 +1,27 @@
 <script>
-
+    import ArrowButton from './ArrowButton.svelte';
 </script>
 
 <div class="down-arrow">
-    <button >DownArrow</button>
+    <ArrowButton>
+        <svg viewBox="0 0 256 256">
+        <polyline
+              fill="none" 
+              stroke="#3d5f99" 
+              stroke-width="20" 
+              stroke-linejoin="round" 
+              stroke-linecap="round" 
+              points="16,72 128,184 240,72" 
+        />
+      </svg>
+    </ArrowButton>  
 </div>
 
 <style>
-button {
-    background-color: #fff;
-    border: none;
-	cursor: pointer;
-}
+svg {
+    width: 50px;
+    height: 50px;
+}  
 .down-arrow {
     display: flex;
     justify-content: center;
