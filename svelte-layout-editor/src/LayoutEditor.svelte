@@ -1,6 +1,10 @@
 <script>
 	import { onMount } from 'svelte';
     import Grid from './components/Grid.svelte';
+	import UpArrow from './components/UpArrow.svelte';
+    import LeftArrow from './components/LeftArrow.svelte';
+    import RightArrow from './components/RightArrow.svelte';
+    import DownArrow from './components/DownArrow.svelte';
 
 	onMount( function() {
         let gridItems = document.getElementsByClassName("section");
@@ -22,17 +26,17 @@
 </script>
 
 <main>
-	<!-- <UpArrow /> -->
+	<UpArrow /> 
+	<LeftArrow />
     <Grid/>
-	<!-- <DownArrow />
-	<GridTest /> -->
+	<RightArrow />
+	<DownArrow />
 </main>
 
 <style>
 	main {
 		width: 90%;
 		text-align: center;
-		padding: 1em;
 		margin: 0 auto;
 	}
 
