@@ -1,9 +1,18 @@
 <script>
    import ArrowButton from './ArrowButton.svelte';
+   
+   // funkar inte 
+   let buttonDisabled = true;
+   //const dispatch = createEventDispatcher();
+
+   const changeHandler = () => {
+        console.log('Up-arrow selected');
+    };
 </script>
 
 <div class="up-arrow">
-    <ArrowButton><svg viewBox="0 0 256 256">
+    <ArrowButton on:click={changeHandler} {buttonDisabled}>
+        <svg viewBox="0 0 256 256">
         <polyline
               fill="none" 
               stroke="#3d5f99"  
@@ -18,8 +27,8 @@
 
 <style>
 svg {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     }   
 .up-arrow {
     display: flex;
@@ -27,4 +36,11 @@ svg {
     align-items: center;
     margin: 30px 0 10px 0;
 }
+@media screen and (min-width: 768px) {
+    svg {
+        width: 50px;
+        height: 50px;
+    }  
+}
+
 </style>

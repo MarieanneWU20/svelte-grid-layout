@@ -1,9 +1,13 @@
 <script>
-    import ArrowButton from './ArrowButton.svelte';
+    import ArrowButton from "./ArrowButton.svelte";
+
+    const changeHandler = () => {
+        console.log("Right-arrow selected");
+    };
 </script>
 
 <div class="right-arrow">
-    <ArrowButton>
+    <ArrowButton on:click={changeHandler}>
         <svg viewBox="0 0 256 256">
             <polyline
                 fill="none"
@@ -19,32 +23,30 @@
 
 <style>
     svg {
-    width: 50px;
-    height: 50px;
-    }   
+        width: 40px;
+        height: 40px;
+    }
     .right-arrow {
         float: right;
-        /*display: inline-flex;
-        justify-content: end;
-        align-self: center;
-        margin: 0 20px 0 0;
-        display: inline-block;*/
         position: absolute;
         left: 90%;
-        padding-left: 10px;
-        top: 90%;
+        padding-right: 20px;
+        top: 34%;
     }
     @media screen and (min-width: 480px) {
         .right-arrow {
-            left: 90%;
-            top: 98%;
+            left: 92%;
+            top: 48%;
         }
     }
-
     @media screen and (min-width: 768px) {
         .right-arrow {
-            left: 98%;
-            top: 122%;
+            left: 94%;
+            top: 61%;
+        }
+        svg {
+            width: 50px;
+            height: 50px;
         }
     }
 </style>
