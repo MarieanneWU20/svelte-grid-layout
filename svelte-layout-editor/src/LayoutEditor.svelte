@@ -1,10 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
     import Grid from './components/Grid.svelte';
-	import UpArrow from './components/UpArrow.svelte';
-    import LeftArrow from './components/LeftArrow.svelte';
-    import RightArrow from './components/RightArrow.svelte';
-    import DownArrow from './components/DownArrow.svelte';
 
 	onMount( function() {
         let gridItems = document.getElementsByClassName("section");
@@ -23,14 +19,21 @@
             });
         };
     });
+
+// listening on:click on ArrowButton for upcomming event
+const addColumn = (e) => {
+	console.log('right', e.detail);
+	//const itemId = e.detail
+}
+
+const addRow = (e) => {
+	console.log('down', e.detail);
+	//const gridId = e.detail
+}
 </script>
 
 <main>
-	<UpArrow /> 
-	<LeftArrow />
-    <Grid/>
-	<RightArrow />
-	<DownArrow />
+    <Grid on:right-arrow={addColumn} on:down-arrow={addRow} />
 </main>
 
 <style>

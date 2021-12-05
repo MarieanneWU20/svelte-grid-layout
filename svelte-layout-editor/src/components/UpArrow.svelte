@@ -1,17 +1,16 @@
 <script>
    import ArrowButton from './ArrowButton.svelte';
-   
    // funkar inte 
    let buttonDisabled = true;
-   //const dispatch = createEventDispatcher();
 
-   const changeHandler = () => {
+   const onArrowClick  = () => {
         console.log('Up-arrow selected');
     };
+
 </script>
 
 <div class="up-arrow">
-    <ArrowButton on:click={changeHandler} {buttonDisabled}>
+    <ArrowButton on:click={onArrowClick} {buttonDisabled}>
         <svg viewBox="0 0 256 256">
         <polyline
               fill="none" 
