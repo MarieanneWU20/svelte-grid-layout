@@ -5,8 +5,9 @@
     let downArrow;
   </script>
   
-  <!--Up-arrow-->
+ 
   {#if upArrow}
+       <!--Up-arrow-->
       <svg class="inner" viewBox="0 0 256 256">
           <polyline
               fill="none" 
