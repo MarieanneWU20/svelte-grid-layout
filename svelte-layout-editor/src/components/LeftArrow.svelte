@@ -1,4 +1,4 @@
-<script>
+<!--<script>
     import ArrowButton from "./ArrowButton.svelte";
 
     const onArrowClick = () => {
@@ -49,4 +49,4 @@
             height: 50px;
         }
     }
-</style>
+</style>-->
