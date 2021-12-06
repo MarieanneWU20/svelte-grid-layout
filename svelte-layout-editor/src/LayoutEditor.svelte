@@ -111,9 +111,74 @@
     //     console.log('down', e.detail);
     //     //const gridId = e.detail
     // };
-    function handleClick() {
+    function handleClick(id, placing, itemId) {
         console.log('Click');
-    }
+        if (placing === "outer") {
+
+            if (id === "down" ) {
+                
+                for (let i = 0; i < gridData.columns; i++) {
+                    let newGridItem = {
+                        id: "",
+                        gridArea:{
+                            startRow: gridData.rows + 1,
+                            startColumn: i + 1,
+                            endRow: gridData.rows + 2,
+                            endColumn: i + 2
+                        }
+                    };
+                    newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
+                    gridData.gridItems.push(newGridItem); 
+                };
+                gridData.rows++;
+                console.log('AFTER down: ', gridData);
+            }
+
+            else if (id === "up" && gridData.rows > 2) {
+
+                let rowToDelete = gridData.rows;
+                let deleteIndex = gridData.gridItems.findIndex(e => e.gridArea.startRow === rowToDelete);
+
+                gridData.gridItems.splice(deleteIndex, gridData.columns);
+                gridData.rows--;
+                console.log('AFTER up: ', gridData); 
+            }
+
+            else if (id === "right") {
+
+                for (let i = 0; i < gridData.rows; i++) {
+                    let newGridItem = {
+                        id: "",
+                        gridArea:{
+                            startRow: i + 1,
+                            startColumn: gridData.columns + 1,
+                            endRow: i + 2,
+                            endColumn: gridData.columns + 2
+                        }
+                    };
+                    newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
+                    gridData.gridItems.push(newGridItem);
+                }
+                gridData.columns++;
+                console.log('AFTER right: ', gridData)
+            }
+
+            else if (id === "left" && gridData.columns > 2) {
+
+                let columnToDelete = gridData.columns;
+                for (let i = 0; i < gridData.rows; i++) {
+
+                    let start = gridData.gridItems.findIndex(element => element.gridArea.startColumn === columnToDelete);
+                    gridData.gridItems.splice(start, 1);
+                }
+                gridData.columns--;
+                console.log('AFTER left: ', gridData)
+                }
+            }
+        else {
+        console.log('Click on: ', itemId+id)
+        }
+    };
 
 </script>
 
