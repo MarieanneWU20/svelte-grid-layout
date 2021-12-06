@@ -83,37 +83,108 @@
     };
 	onMount( function() {
         console.log(gridData);
+        //TODO: move to GridItem
         let gridItems = document.getElementsByClassName("section");
 
         for (let i = 0; i < gridItems.length; i++) {
             const gridItem = gridItems[i];
             
             gridItem.addEventListener("mouseover", function() {
-                //TODO: display arrows and listen for click
+                // display arrows and listen for click
                 console.log("mouseOVER", i + 1);
             });
 
             gridItem.addEventListener("mouseout", function() {
-                //TODO: hide arrows
+                //hide arrows
                 console.log("mouseOUT", i + 1);
             });
         };
-    });
+    });//TODO: move to GridItem
 
 // listening on:click on ArrowButton for upcomming event
-    const addColumn = (e) => {
-        console.log('right', e.detail);
-        //const itemId = e.detail
+    // const addColumn = (e) => {
+    //     console.log('right', e.detail);
+    //     //const itemId = e.detail
+    // };
+
+    // const addRow = (e) => {
+    //     console.log('down', e.detail);
+    //     //const gridId = e.detail
+    // };
+    function handleClick(id, placing, itemId) {
+        console.log('Click');
+        if (placing === "outer") {
+
+            if (id === "down" ) {
+                
+                for (let i = 0; i < gridData.columns; i++) {
+                    let newGridItem = {
+                        id: "",
+                        gridArea:{
+                            startRow: gridData.rows + 1,
+                            startColumn: i + 1,
+                            endRow: gridData.rows + 2,
+                            endColumn: i + 2
+                        }
+                    };
+                    newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
+                    gridData.gridItems.push(newGridItem); 
+                };
+                gridData.rows++;
+                console.log('AFTER down: ', gridData);
+            }
+
+            else if (id === "up" && gridData.rows > 2) {
+
+                let rowToDelete = gridData.rows;
+                let deleteIndex = gridData.gridItems.findIndex(e => e.gridArea.startRow === rowToDelete);
+
+                gridData.gridItems.splice(deleteIndex, gridData.columns);
+                gridData.rows--;
+                console.log('AFTER up: ', gridData); 
+            }
+
+            else if (id === "right") {
+
+                for (let i = 0; i < gridData.rows; i++) {
+                    let newGridItem = {
+                        id: "",
+                        gridArea:{
+                            startRow: i + 1,
+                            startColumn: gridData.columns + 1,
+                            endRow: i + 2,
+                            endColumn: gridData.columns + 2
+                        }
+                    };
+                    newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
+                    gridData.gridItems.push(newGridItem);
+                }
+                gridData.columns++;
+                console.log('AFTER right: ', gridData)
+            }
+
+            else if (id === "left" && gridData.columns > 2) {
+
+                let columnToDelete = gridData.columns;
+                for (let i = 0; i < gridData.rows; i++) {
+
+                    let start = gridData.gridItems.findIndex(element => element.gridArea.startColumn === columnToDelete);
+                    gridData.gridItems.splice(start, 1);
+                }
+                gridData.columns--;
+                console.log('AFTER left: ', gridData)
+                }
+            }
+        else {
+        console.log('Click on: ', itemId+id)
+        }
     };
 
-    const addRow = (e) => {
-        console.log('down', e.detail);
-        //const gridId = e.detail
-    };
 </script>
 
 <main>
-    <Grid bind:gridData={gridData} on:right-arrow={addColumn} on:down-arrow={addRow} />
+    <!-- on:right-arrow={addColumn} on:down-arrow={addRow} -->
+    <Grid onClick={handleClick} bind:gridData={gridData}  />
 </main>
 
 <style>
