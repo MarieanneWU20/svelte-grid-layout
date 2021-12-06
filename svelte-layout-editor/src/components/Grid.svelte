@@ -6,22 +6,38 @@
   import GridItem from "./GridItem.svelte";
 
   export let gridData;
- 
+  export let onClick;
+  
 </script>
 
 <div class="test-editor">
-  <UpArrow /> 
-  <div class="row">
-    <LeftArrow />
-    <div class="container">
-      {#each gridData.gridItems as gridItem}
-      <!-- onClick={onClick} rows={gridData.rows.toString()} columns={gridData.columns.toString()} id={gridItem.id} -->
+  	<div class="up-arrow">
+    {#if gridData.rows > 3}
+      	<UpArrow onClick={onClick}/> 
+    {/if}
+  	</div>
+  	<div class="row">
+		<div class="left-arrow">
+			{#if gridData.columns > 3}
+				<LeftArrow onClick={onClick}/>
+			{/if}
+		</div>
+
+		<div class="container">
+			{#each gridData.gridItems as gridItem}
+			<!-- onClick={onClick} rows={gridData.rows.toString()} columns={gridData.columns.toString()} id={gridItem.id} -->
 				<GridItem gridArea="{gridItem.gridArea.startRow}/{gridItem.gridArea.startColumn}/{gridItem.gridArea.endRow}/{gridItem.gridArea.endColumn}">ID: {gridItem.id}</GridItem>
 			{/each}
-    </div>
-    <RightArrow on:right-arrow/>
-  </div>
-  <DownArrow on:down-arrow />
+		</div>
+		<div class="right-arrow">
+		<!-- on:right-arrow -->
+			<RightArrow onClick={onClick}/>
+		</div>
+  	</div>
+	<div class="down-arrow">
+  	<!-- on:down-arrow -->
+  		<DownArrow onClick={onClick} />
+	</div>
 </div>
 
 <style>

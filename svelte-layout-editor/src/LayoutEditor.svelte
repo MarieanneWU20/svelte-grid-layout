@@ -83,37 +83,43 @@
     };
 	onMount( function() {
         console.log(gridData);
+        //TODO: move to GridItem
         let gridItems = document.getElementsByClassName("section");
 
         for (let i = 0; i < gridItems.length; i++) {
             const gridItem = gridItems[i];
             
             gridItem.addEventListener("mouseover", function() {
-                //TODO: display arrows and listen for click
+                // display arrows and listen for click
                 console.log("mouseOVER", i + 1);
             });
 
             gridItem.addEventListener("mouseout", function() {
-                //TODO: hide arrows
+                //hide arrows
                 console.log("mouseOUT", i + 1);
             });
         };
-    });
+    });//TODO: move to GridItem
 
 // listening on:click on ArrowButton for upcomming event
-    const addColumn = (e) => {
-        console.log('right', e.detail);
-        //const itemId = e.detail
-    };
+    // const addColumn = (e) => {
+    //     console.log('right', e.detail);
+    //     //const itemId = e.detail
+    // };
 
-    const addRow = (e) => {
-        console.log('down', e.detail);
-        //const gridId = e.detail
-    };
+    // const addRow = (e) => {
+    //     console.log('down', e.detail);
+    //     //const gridId = e.detail
+    // };
+    function handleClick() {
+        console.log('Click');
+    }
+
 </script>
 
 <main>
-    <Grid bind:gridData={gridData} on:right-arrow={addColumn} on:down-arrow={addRow} />
+    <!-- on:right-arrow={addColumn} on:down-arrow={addRow} -->
+    <Grid onClick={handleClick} bind:gridData={gridData}  />
 </main>
 
 <style>
