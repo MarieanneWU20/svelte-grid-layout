@@ -1,4 +1,4 @@
-<script>
+<!--<script>
    import ArrowButton from './ArrowButton.svelte';
    // funkar inte 
    let buttonDisabled = true;
@@ -42,4 +42,4 @@ svg {
     }  
 }
 
-</style>
+</style>-->

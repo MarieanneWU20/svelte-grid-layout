@@ -1,4 +1,4 @@
-<script>
+<!--<script>
     import { createEventDispatcher } from 'svelte';
     import ArrowButton from "./ArrowButton.svelte";
 
@@ -53,4 +53,4 @@
             height: 50px;
         }
     }
-</style>
+</style>-->
