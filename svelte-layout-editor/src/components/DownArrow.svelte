@@ -1,13 +1,17 @@
 <script>
+    import { createEventDispatcher } from 'svelte';
     import ArrowButton from "./ArrowButton.svelte";
 
-    const changeHandler = () => {
+    const dispatch = createEventDispatcher();
+
+    const onArrowClick = (gridId) => {
         console.log("Down-arrow selected");
+        dispatch('down-arrow', gridId); 
     };
 </script>
 
 <div class="down-arrow">
-    <ArrowButton on:click={changeHandler}>
+    <ArrowButton on:click={onArrowClick}>
         <svg viewBox="0 0 256 256">
             <polyline
                 fill="none"

@@ -1,13 +1,13 @@
 <script>
     import ArrowButton from "./ArrowButton.svelte";
 
-    const changeHandler = () => {
+    const onArrowClick = () => {
         console.log("Left-arrow selected");
     };
 </script>
 
 <div class="left-arrow">
-    <ArrowButton on:click={changeHandler}>
+    <ArrowButton on:click={onArrowClick}>
         <svg viewBox="0 0 256 256">
             <polyline
                 fill="none"

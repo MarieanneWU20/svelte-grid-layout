@@ -1,20 +1,24 @@
 <script>
-  //import UpArrow from './UpArrow.svelte';
-  //import LeftArrow from './LeftArrow.svelte';
-  //import RightArrow from './RightArrow.svelte';
-  //import DownArrow from './DownArrow.svelte';
+  import UpArrow from './UpArrow.svelte';
+  import LeftArrow from './LeftArrow.svelte';
+  import RightArrow from './RightArrow.svelte';
+  import DownArrow from './DownArrow.svelte';
   import GridItem from "./GridItem.svelte";
 </script>
 
 <div class="test-editor">
+  <UpArrow /> 
   <div class="row">
+    <LeftArrow />
     <div class="container">
       <GridItem gridArea="1 / 1 / 2 / 2">1</GridItem>
       <GridItem gridArea="1 / 2 / 2 / 3">2</GridItem>
       <GridItem gridArea="2 / 1 / 3 / 2">3</GridItem>
       <GridItem gridArea="2 / 2 / 3 / 3">4</GridItem>
     </div>
+    <RightArrow on:right-arrow/>
   </div>
+  <DownArrow on:down-arrow />
 </div>
 
 <style>
