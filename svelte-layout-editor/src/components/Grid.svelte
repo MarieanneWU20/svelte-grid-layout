@@ -4,6 +4,9 @@
   import RightArrow from './RightArrow.svelte';
   import DownArrow from './DownArrow.svelte';
   import GridItem from "./GridItem.svelte";
+
+  export let gridData;
+ 
 </script>
 
 <div class="test-editor">
@@ -11,10 +14,10 @@
   <div class="row">
     <LeftArrow />
     <div class="container">
-      <GridItem gridArea="1 / 1 / 2 / 2">1</GridItem>
-      <GridItem gridArea="1 / 2 / 2 / 3">2</GridItem>
-      <GridItem gridArea="2 / 1 / 3 / 2">3</GridItem>
-      <GridItem gridArea="2 / 2 / 3 / 3">4</GridItem>
+      {#each gridData.gridItems as gridItem}
+      <!-- onClick={onClick} rows={gridData.rows.toString()} columns={gridData.columns.toString()} id={gridItem.id} -->
+				<GridItem gridArea="{gridItem.gridArea.startRow}/{gridItem.gridArea.startColumn}/{gridItem.gridArea.endRow}/{gridItem.gridArea.endColumn}">ID: {gridItem.id}</GridItem>
+			{/each}
     </div>
     <RightArrow on:right-arrow/>
   </div>
