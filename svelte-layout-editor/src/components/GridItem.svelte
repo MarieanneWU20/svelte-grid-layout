@@ -1,26 +1,26 @@
 <script>
-	import { onMount } from 'svelte';
-  import ArrowButton from "./ArrowButton.svelte";
-	  
-  export let gridArea;
-  export let id;
-  export let rows;
+	import { onMount } from "svelte";
+	import ArrowButton from "./ArrowButton.svelte";
+
+	export let gridArea;
+	export let id;
+	export let rows;
 	export let columns;
 	export let onClick;
 
 	let area;
 	let startRow;
-	let startColumn ;
+	let startColumn;
 
-  	function extractRowAndColumn(gridArea) {
+	function extractRowAndColumn(gridArea) {
 		area = gridArea.split("/");
 		// console.log(area);
 		startRow = area[0];
 		startColumn = area[1];
- 	}
-  	extractRowAndColumn(gridArea);
+	}
+	extractRowAndColumn(gridArea);
 
-	  onMount( function() {
+	onMount(function () {
 		let gridItems = document.getElementsByClassName("section");
 
 		for (let i = 0; i < gridItems.length; i++) {
@@ -28,132 +28,95 @@
 
 			// Get all inner-buttons and hide them
 			let arrowBtns = document.getElementsByClassName("inner");
-			for(let i = 0; i < arrowBtns.length; i++){
-					let arrowButton = arrowBtns[i];
-					arrowButton.style="display: none"; 
-				};
+			for (let i = 0; i < arrowBtns.length; i++) {
+				let arrowButton = arrowBtns[i];
+				arrowButton.style = "display: none";
+			}
 
 			// Listen for mouse-over = show inner-buttons
-			gridItem.addEventListener("mouseover", function() {
+			gridItem.addEventListener("mouseover", function () {
 				let arrowBtns = this.getElementsByClassName("inner");
-				for(let i = 0; i < arrowBtns.length; i++){
+				for (let i = 0; i < arrowBtns.length; i++) {
 					let arrowButton = arrowBtns[i];
-					arrowButton.style="display: inline-block";
-				}; // console.log("mouseOVER", i + 1);
+					arrowButton.style = "display: inline-block";
+				} // console.log("mouseOVER", i + 1);
 			});
 
 			// Listen for mouse-out = hide inner-buttons
-			gridItem.addEventListener("mouseout", function() {
+			gridItem.addEventListener("mouseout", function () {
 				let arrowBtns = this.getElementsByClassName("inner");
-				for(let i = 0; i < arrowBtns.length; i++){
+				for (let i = 0; i < arrowBtns.length; i++) {
 					let arrowButton = arrowBtns[i];
-					arrowButton.style="display: none"; 
-				}; // console.log("mouseOUT", i + 1);
+					arrowButton.style = "display: none";
+				} // console.log("mouseOUT", i + 1);
 			});
-		};
+		}
 	});
 	//console.log('ROWS: ', rows,'COLUMNS: ', columns);
 </script>
 
-<div id={id} class="section" style="grid-area: {gridArea} ;">
+<div {id} class="section" style="grid-area: {gridArea} ;">
 	<div class="up-arrow">
-		{#if startRow !== '1'}
-			<ArrowButton onClick={onClick} itemId={id} placing="inner" id='up'/>
+		{#if startRow !== "1"}
+			<ArrowButton {onClick} itemId={id} placing="inner" id="up" />
 		{/if}
 	</div>
-	<slot/>
+	<slot />
 	<div class="left-arrow">
-		{#if startColumn !== '1'}
-			<ArrowButton onClick={onClick} itemId={id} placing="inner" id='left'/>
+		{#if startColumn !== "1"}
+			<ArrowButton {onClick} itemId={id} placing="inner" id="left" />
 		{/if}
 	</div>
 	<div class="right-arrow">
 		{#if startColumn !== columns}
-			<ArrowButton onClick={onClick} itemId={id} placing="inner" id='right'/>
+			<ArrowButton {onClick} itemId={id} placing="inner" id="right" />
 		{/if}
 	</div>
 	<div class="down-arrow">
 		{#if startRow !== rows}
-			<ArrowButton onClick={onClick} itemId={id} placing="inner" id='down'/>
+			<ArrowButton {onClick} itemId={id} placing="inner" id="down" />
 		{/if}
 	</div>
-
 </div>
 
 <style>
 	div {
 		width: auto;
-		height: fit-content;
-		/* min-height: 100px; */
+		height: auto;
 		border-radius: 20px;
-		background-color: #FFFFFF;
+		background-color: #ffffff;
 		text-align: center;
 		vertical-align: middle;
-  	}				
-  	.up-arrow {
-	  justify-content: center;
-	  height: 50px;
-  	}
+	}
+	.up-arrow {
+		justify-content: center;
+		height: 25px;
+	}
 	.left-arrow {
-	  float: left;
-	  width: 50px;
-	  height: 50px;
-  	}
+		float: left;
+		width: 25px;
+		height: 25px;
+	}
 	.right-arrow {
-	  float: right;
-	  width: 50px;
-	  height: 50px;
-  	}
-  	.down-arrow {
-	  justify-content: center;
-	  height: 50px;
-	  margin-top: 20%;
-  	}
-	/* @media screen and (min-width: 480px){
+		float: right;
+		width: 25px;
+		height: 45px;
+	}
+	.down-arrow {
+		justify-content: center;
+		height: 25px;
+		margin-top: 20%;
+	}
+	@media screen and (min-width: 480px){
 	div{
 		border-radius: 25px;  
-		padding: 10px;
+		padding: 15px;
 	}
 	}
 	@media screen and (min-width: 768px){
 	div{
 		border-radius: 30px;  
-		padding: 10px;
+		padding: 20px;
 		}
-	} */
+	}
 </style>
-
-
-
-<!--<script>
-  // import ArrowButton from "./ArrowButton.svelte";
-  export let gridArea;
-</script>
-
-<style>
-  div {
-    width: auto;
-    border-radius: 20px;
-    padding: 5px;
-    background-color: #FFFFFF;
-    text-align: center;
-    vertical-align: middle;
-}
-@media screen and (min-width: 480px){
-div{
-    border-radius: 25px;  
-    padding: 10px;
-  }
-}
-@media screen and (min-width: 768px){
- div{
-     border-radius: 30px;  
-     padding: 10px;
-  }
-}
-</style>
-
-<div class="section" style="grid-area: {gridArea};">
-  <slot/>
-<ArrowButton/> 
-</div>-->

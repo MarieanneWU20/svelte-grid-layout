@@ -120,6 +120,7 @@
         gridData.rows++;
         console.log('AFTER down: ', gridData);
     };
+
     //TODO: import function from seperate file
     function removeRow() {
         let rowToDelete = gridData.rows;
@@ -130,6 +131,7 @@
         console.log('AFTER up: ', gridData); 
     };
     //TODO: import function from seperate file
+    
     function addColumn() {
         for (let i = 0; i < gridData.rows; i++) {
             let newGridItem = {

@@ -1,8 +1,4 @@
 <script>
-    // let upArrow;
-    // let leftArrow;
-    // let rightArrow;
-    // let downArrow;
     export let placing;
     export let id;
 </script>
