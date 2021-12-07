@@ -37,7 +37,7 @@
 <style>
   .test-editor {
     width: 100%;
-    height: 90%;
+    height: auto;
   }
   .up-arrow {
 		display: flex;
@@ -49,28 +49,25 @@
     padding: 0 20px;
   }
   .left-arrow {
-		position: absolute;
+    position: fixed;
     left: -15px;
+    top: 25%;
     padding-left: 10px;
-    top: 34%;
-    color: #ccc;
 	}
   .container {
     padding: 10px;
     background-color: #edf1f7;
     border: 1px solid #3d5f99;
-    height: 50vh;
+    min-height: 50vh;
     display: grid;
     grid-auto-columns: 1fr 1fr;
     grid-auto-rows: 1fr 1fr;
     gap: 0.6rem 0.6rem;
   }
   .right-arrow {
-		float: right;
-        position: absolute;
-        right: 3%;
-        /* padding-right: 20px; */
-        top: 34%;
+    position: fixed;
+    right: 0;
+    top: 25%;
 	}
 	.down-arrow {
 		display: flex;
@@ -80,14 +77,30 @@
 	}
   @media screen and (min-width: 480px) {
     .container {
-      padding: 20px;
-      gap: 1rem 1rem;
-      height: 75vh;
+      padding: 15px;
+      gap: 0.8rem 0.8rem;
+      min-height: 75vh;
+    }
+    .left-arrow,
+    .right-arrow {
+      top: 35%;
     }
   }
   @media screen and (min-width: 768px) {
     .container {
-      height: 100vh;
+      padding: 18px;
+      gap: 1rem 1rem;
+      min-height: 100vh;
+    }
+    .left-arrow,
+    .right-arrow {
+      top: 37%;
     }
   }
+  @media screen and (min-width: 1024px) {
+    .left-arrow,
+    .right-arrow {
+      top: 40%;
+  }
+}
 </style>
