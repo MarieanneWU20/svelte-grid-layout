@@ -3,7 +3,7 @@
   import GridItem from "./GridItem.svelte";
 
   export let gridData;
-  
+
   function handleClick(id, placing, itemId) {
 
     if (placing === "outer") {
@@ -70,7 +70,7 @@
       gridData.gridItems.push(newGridItem);
     }
     gridData.columns++;
-    console.log('AFTER right: ', gridData)
+    console.log('AFTER right: ', gridData);
   };
   //TODO: import function from seperate file
   function removeColumn() {
@@ -80,12 +80,11 @@
         gridData.gridItems.splice(start, 1);
     };
     gridData.columns--;
-    console.log('AFTER left: ', gridData)
+    console.log('AFTER left: ', gridData);
   };
-
 </script>
 
-<div class="test-editor">
+<div class="editor">
   <div class="up-arrow">
     {#if gridData.rows > 3}
       <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="up"/> 
@@ -97,7 +96,7 @@
         <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="left"/>
       {/if}
     </div>
-    <div class="container">
+    <div id="container" class="container">
       {#each gridData.gridItems as gridItem}
         <GridItem onClick={handleClick} gridItem={gridItem} rows={gridData.rows} columns={gridData.columns} gridArea="{gridItem.gridArea.startRow}/{gridItem.gridArea.startColumn}/{gridItem.gridArea.endRow}/{gridItem.gridArea.endColumn}">ID: {gridItem.id}</GridItem>
       {/each}
@@ -112,7 +111,7 @@
 </div>
 
 <style>
-  .test-editor {
+  .editor {
     width: 100%;
     height: auto;
   }
