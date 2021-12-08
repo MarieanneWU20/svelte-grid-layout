@@ -20,10 +20,73 @@
             removeColumn();
         }
     }
-    else {
-        console.log('Click on: ', itemId+id)
-    }
-  };
+    else if (placing === "inner"){
+
+      let gridItems = gridData.gridItems;
+			let clickedItem = gridItems.find(e => e.id === itemId);
+			let clickedIndex = gridItems.findIndex(e => e.id === clickedItem.id);
+			let mergeItem;
+			let mergeIndex;
+    
+      if (id === "up") {
+        mergeItem = gridItems.find(e => e.gridArea.startRow === clickedItem.gridArea.startRow -1 && e.gridArea.startColumn === clickedItem.gridArea.startColumn);
+        
+        clickedItem = {
+          id: `r${mergeItem.gridArea.startRow}c${clickedItem.gridArea.startColumn}`,
+          gridArea: {
+            startRow: mergeItem.gridArea.startRow,
+            startColumn: clickedItem.gridArea.startColumn,
+            endRow: clickedItem.gridArea.endRow,
+            endColumn: clickedItem.gridArea.endColumn
+          }
+        };
+      }
+      else if (id === "right") {
+				mergeItem = gridData.gridItems.find(e => e.gridArea.startRow === clickedItem.gridArea.startRow && e.gridArea.startColumn === clickedItem.gridArea.startColumn + 1);
+				
+				clickedItem = {
+					id: `r${mergeItem.gridArea.startRow}c${clickedItem.gridArea.startColumn}`,
+					gridArea: {
+						startRow: clickedItem.gridArea.startRow,
+						startColumn: clickedItem.gridArea.startColumn,
+						endRow: clickedItem.gridArea.endRow,
+						endColumn: mergeItem.gridArea.endColumn
+				}};
+			}
+      else if( id === "down") {
+				mergeItem = gridData.gridItems.find(e => e.gridArea.startRow === clickedItem.gridArea.startRow + 1 && e.gridArea.startColumn === clickedItem.gridArea.startColumn);
+				
+				clickedItem = {
+					id: `r${clickedItem.gridArea.startRow}c${clickedItem.gridArea.startColumn}`,
+					gridArea: {
+						startRow: clickedItem.gridArea.startRow,
+						startColumn: clickedItem.gridArea.startColumn,
+						endRow: mergeItem.gridArea.endRow,
+						endColumn: mergeItem.gridArea.endColumn
+				}};
+			}
+      else if( id === "left") {
+				mergeItem = gridData.gridItems.find(e => e.gridArea.startRow === clickedItem.gridArea.startRow && e.gridArea.startColumn === clickedItem.gridArea.startColumn - 1);
+				
+				clickedItem = {
+					id: `r${clickedItem.gridArea.startRow}c${mergeItem.gridArea.startColumn}`,
+					gridArea: {
+						startRow: clickedItem.gridArea.startRow,
+						startColumn: mergeItem.gridArea.startColumn,
+						endRow: clickedItem.gridArea.endRow,
+						endColumn: clickedItem.gridArea.endColumn
+				}};
+			}
+      gridItems.splice(clickedIndex, 1, clickedItem);
+
+      mergeIndex = gridItems.findIndex(e => e.id === mergeItem.id);
+      gridItems.splice(mergeIndex, 1);
+
+      gridData.gridItems = gridItems;
+      console.log(gridData.gridItems);
+      console.log('Click on: ', clickedItem,'delete: ', mergeItem);
+    };
+  }
 
   //TODO: import function from seperate file
   function addRow() {
