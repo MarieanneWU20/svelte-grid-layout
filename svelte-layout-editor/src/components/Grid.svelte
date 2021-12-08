@@ -3,33 +3,112 @@
   import GridItem from "./GridItem.svelte";
 
   export let gridData;
-  export let onClick;
+  // export let onClick;
   
+  function handleClick(id, placing, itemId) {
+
+    if (placing === "outer") {
+        if (id === "down" ) {
+            addRow();
+        }
+        else if (id === "up" && gridData.rows > 3) {
+            removeRow();
+        }
+        else if (id === "right") {
+            addColumn();
+        }
+        else if (id === "left" && gridData.columns > 3) {
+            removeColumn();
+        }
+    }
+    else {
+        console.log('Click on: ', itemId+id)
+    }
+  };
+
+  //TODO: import function from seperate file
+  function addRow() {
+    for (let i = 0; i < gridData.columns; i++) {
+      let newGridItem = {
+        id: "",
+        gridArea:{
+          startRow: gridData.rows + 1,
+          startColumn: i + 1,
+          endRow: gridData.rows + 2,
+          endColumn: i + 2
+        }
+      };
+      newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
+      gridData.gridItems.push(newGridItem); 
+    };
+    gridData.rows++;
+    console.log('AFTER down: ', gridData);
+  };
+
+  //TODO: import function from seperate file
+  function removeRow() {
+    let rowToDelete = gridData.rows;
+    let deleteIndex = gridData.gridItems.findIndex(e => e.gridArea.startRow === rowToDelete);
+
+    gridData.gridItems.splice(deleteIndex, gridData.columns);
+    gridData.rows--;
+    console.log('AFTER up: ', gridData); 
+  };
+    //TODO: import function from seperate file
+
+  function addColumn() {
+    for (let i = 0; i < gridData.rows; i++) {
+      let newGridItem = {
+        id: "",
+        gridArea:{
+          startRow: i + 1,
+          startColumn: gridData.columns + 1,
+          endRow: i + 2,
+          endColumn: gridData.columns + 2
+        }
+      };
+      newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
+      gridData.gridItems.push(newGridItem);
+    }
+    gridData.columns++;
+    console.log('AFTER right: ', gridData)
+  };
+  //TODO: import function from seperate file
+  function removeColumn() {
+    let columnToDelete = gridData.columns;
+    for (let i = 0; i < gridData.rows; i++) {
+        let start = gridData.gridItems.findIndex(element => element.gridArea.startColumn === columnToDelete);
+        gridData.gridItems.splice(start, 1);
+    };
+    gridData.columns--;
+    console.log('AFTER left: ', gridData)
+  };
+
 </script>
 
 <div class="test-editor">
   <div class="up-arrow">
     {#if gridData.rows > 3}
-      <ArrowButton onClick={onClick} itemId="editor" placing="outer" id="up"/> 
+      <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="up"/> 
     {/if}
   </div>
   <div class="row">
     <div class="left-arrow">
       {#if gridData.columns > 3}
-        <ArrowButton onClick={onClick} itemId="editor" placing="outer" id="left"/>
+        <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="left"/>
       {/if}
     </div>
     <div class="container">
       {#each gridData.gridItems as gridItem}
-        <GridItem onClick={onClick} gridItem={gridItem} rows={gridData.rows} columns={gridData.columns} gridArea="{gridItem.gridArea.startRow}/{gridItem.gridArea.startColumn}/{gridItem.gridArea.endRow}/{gridItem.gridArea.endColumn}">ID: {gridItem.id}</GridItem>
+        <GridItem onClick={handleClick} gridItem={gridItem} rows={gridData.rows} columns={gridData.columns} gridArea="{gridItem.gridArea.startRow}/{gridItem.gridArea.startColumn}/{gridItem.gridArea.endRow}/{gridItem.gridArea.endColumn}">ID: {gridItem.id}</GridItem>
       {/each}
     </div>
     <div class="right-arrow">
-      <ArrowButton onClick={onClick} itemId="editor" placing="outer" id="right"/>
+      <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="right"/>
     </div>
   </div>
 	<div class="down-arrow">
-  	<ArrowButton onClick={onClick} itemId="editor" placing="outer" id="down"/>
+  	<ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="down"/>
 	</div>
 </div>
 
