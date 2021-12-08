@@ -36,4 +36,7 @@
         background-color: #fff;
 	    cursor: pointer;
     }
+    .inner {
+        display:none;
+    }
 </style>

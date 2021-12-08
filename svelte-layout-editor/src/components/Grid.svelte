@@ -8,29 +8,28 @@
 </script>
 
 <div class="test-editor">
-  	<div class="up-arrow">
+  <div class="up-arrow">
     {#if gridData.rows > 3}
-      	<ArrowButton onClick={onClick} itemId="editor" placing="outer" id="up"/> 
+      <ArrowButton onClick={onClick} itemId="editor" placing="outer" id="up"/> 
     {/if}
-  	</div>
-  	<div class="row">
-		<div class="left-arrow">
-			{#if gridData.columns > 3}
-				<ArrowButton onClick={onClick} itemId="editor" placing="outer" id="left"/>
-			{/if}
-		</div>
-
-		<div class="container">
-			{#each gridData.gridItems as gridItem}
-				<GridItem onClick={onClick} rows={gridData.rows.toString()} columns={gridData.columns.toString()} id={gridItem.id} gridArea="{gridItem.gridArea.startRow}/{gridItem.gridArea.startColumn}/{gridItem.gridArea.endRow}/{gridItem.gridArea.endColumn}">ID: {gridItem.id}</GridItem>
-			{/each}
-		</div>
-		<div class="right-arrow">
-			<ArrowButton onClick={onClick} itemId="editor" placing="outer" id="right"/>
-		</div>
-  	</div>
+  </div>
+  <div class="row">
+    <div class="left-arrow">
+      {#if gridData.columns > 3}
+        <ArrowButton onClick={onClick} itemId="editor" placing="outer" id="left"/>
+      {/if}
+    </div>
+    <div class="container">
+      {#each gridData.gridItems as gridItem}
+        <GridItem onClick={onClick} gridItem={gridItem} rows={gridData.rows} columns={gridData.columns} gridArea="{gridItem.gridArea.startRow}/{gridItem.gridArea.startColumn}/{gridItem.gridArea.endRow}/{gridItem.gridArea.endColumn}">ID: {gridItem.id}</GridItem>
+      {/each}
+    </div>
+    <div class="right-arrow">
+      <ArrowButton onClick={onClick} itemId="editor" placing="outer" id="right"/>
+    </div>
+  </div>
 	<div class="down-arrow">
-  		<ArrowButton onClick={onClick} itemId="editor" placing="outer" id="down"/>
+  	<ArrowButton onClick={onClick} itemId="editor" placing="outer" id="down"/>
 	</div>
 </div>
 
