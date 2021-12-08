@@ -81,88 +81,11 @@
         ]
     };
 
-    function handleClick(id, placing, itemId) {
-
-        if (placing === "outer") {
-            if (id === "down" ) {
-                addRow();
-            }
-            else if (id === "up" && gridData.rows > 3) {
-                removeRow();
-            }
-            else if (id === "right") {
-                addColumn();
-            }
-            else if (id === "left" && gridData.columns > 3) {
-                removeColumn();
-            }
-        }
-        else {
-            console.log('Click on: ', itemId+id)
-        }
-    };
-
-    //TODO: import function from seperate file
-    function addRow() {
-        for (let i = 0; i < gridData.columns; i++) {
-            let newGridItem = {
-                id: "",
-                gridArea:{
-                    startRow: gridData.rows + 1,
-                    startColumn: i + 1,
-                    endRow: gridData.rows + 2,
-                    endColumn: i + 2
-                }
-            };
-            newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
-            gridData.gridItems.push(newGridItem); 
-        };
-        gridData.rows++;
-        console.log('AFTER down: ', gridData);
-    };
-
-    //TODO: import function from seperate file
-    function removeRow() {
-        let rowToDelete = gridData.rows;
-        let deleteIndex = gridData.gridItems.findIndex(e => e.gridArea.startRow === rowToDelete);
-
-        gridData.gridItems.splice(deleteIndex, gridData.columns);
-        gridData.rows--;
-        console.log('AFTER up: ', gridData); 
-    };
-    //TODO: import function from seperate file
     
-    function addColumn() {
-        for (let i = 0; i < gridData.rows; i++) {
-            let newGridItem = {
-                id: "",
-                gridArea:{
-                    startRow: i + 1,
-                    startColumn: gridData.columns + 1,
-                    endRow: i + 2,
-                    endColumn: gridData.columns + 2
-                }
-            };
-            newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
-            gridData.gridItems.push(newGridItem);
-        }
-        gridData.columns++;
-        console.log('AFTER right: ', gridData)
-    };
-    //TODO: import function from seperate file
-    function removeColumn() {
-        let columnToDelete = gridData.columns;
-        for (let i = 0; i < gridData.rows; i++) {
-            let start = gridData.gridItems.findIndex(element => element.gridArea.startColumn === columnToDelete);
-            gridData.gridItems.splice(start, 1);
-        };
-        gridData.columns--;
-        console.log('AFTER left: ', gridData)
-    };
 </script>
 
 <main>
-    <Grid onClick={handleClick} bind:gridData={gridData} />
+    <Grid bind:gridData={gridData} />
 </main>
 
 <style>
