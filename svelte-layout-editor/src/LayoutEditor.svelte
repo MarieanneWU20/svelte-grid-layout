@@ -85,8 +85,7 @@
 </script>
 
 <main>
-    <!-- onClick={handleClick} -->
-    <Grid  bind:gridData={gridData} />
+    <Grid bind:gridData={gridData} />
 </main>
 
 <style>

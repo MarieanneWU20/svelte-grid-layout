@@ -3,7 +3,6 @@
   import GridItem from "./GridItem.svelte";
 
   export let gridData;
-  // export let onClick;
   
   function handleClick(id, placing, itemId) {
 
