@@ -59,13 +59,13 @@
       height: 25px;
   }
   .outer{
-      width: 45px;
-      height: 45px;
+      width: 30px;
+      height: 30px;
   }
    @media screen and (min-width: 768px) {
   .outer{
-      width: 50px;
-      height: 50px;
+      width: 35px;
+      height: 35px;
      }
   }
   </style>

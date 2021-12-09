@@ -102,12 +102,16 @@
       {/each}
     </div>
     <div class="right-arrow">
+      {#if gridData.columns < 5}
       <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="right"/>
+      {/if}
     </div>
   </div>
 	<div class="down-arrow">
+    {#if gridData.rows < 5}
   	<ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="down"/>
-	</div>
+	  {/if}
+  </div>
 </div>
 
 <style>
