@@ -87,13 +87,13 @@
 
 <div class="test-editor">
   <div class="up-arrow">
-    {#if gridData.rows > 3}
+    {#if gridData.rows > 3 && gridData.rows < 5}
       <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="up"/> 
     {/if}
   </div>
   <div class="row">
     <div class="left-arrow">
-      {#if gridData.columns > 3}
+      {#if gridData.columns > 3 && gridData.columns < 5 }
         <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="left"/>
       {/if}
     </div>
@@ -103,12 +103,16 @@
       {/each}
     </div>
     <div class="right-arrow">
+      {#if gridData.columns < 5}
       <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="right"/>
+      {/if}
     </div>
   </div>
 	<div class="down-arrow">
+    {#if gridData.rows < 5}
   	<ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="down"/>
-	</div>
+	  {/if}
+  </div>
 </div>
 
 <style>

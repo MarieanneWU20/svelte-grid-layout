@@ -12,7 +12,7 @@
 </script>
 
 {#if id === "up"}
-    <button on:click={handleClick}  class={placing}> 
+    <button on:click={handleClick} class={placing}> 
         <Arrow placing={placing} id={id} />
     </button>
 {:else if id === "left"}
