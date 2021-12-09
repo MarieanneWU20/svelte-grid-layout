@@ -11,7 +11,6 @@
 	onMount(function () {
 
 		let gridItems = document.getElementsByClassName("section");
-		let container = document.getElementById("container");
 
 		for (let i = 0; i < gridItems.length; i++) {
 			const gridItem = gridItems[i];
@@ -32,22 +31,6 @@
 				};
 			});
 		};
-		// Listen for mouse-over Grid to hide outer-buttons
-		container.addEventListener("mouseover", function () {
-      		let outerArrowBtns = document.getElementsByClassName("outer");
-			for (let i = 0; i < outerArrowBtns.length; i++) {
-				const arrowButton = outerArrowBtns[i];
-				arrowButton.style = "display: none";
-			};
-    	});
-		// Listen for mouse-out Grid to show outer-buttons
-    	container.addEventListener("mouseout", function () {
-      		let outerArrowBtns = document.getElementsByClassName("outer");
-			for (let i = 0; i < outerArrowBtns.length; i++) {
-				const arrowButton = outerArrowBtns[i];
-				arrowButton.style = "display: inline-block";
-			};
-    	});
 	});
 	
 </script>
