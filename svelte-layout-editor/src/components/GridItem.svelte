@@ -9,29 +9,30 @@
 	export let onClick;
 
 	onMount(function () {
+
 		let gridItems = document.getElementsByClassName("section");
 
 		for (let i = 0; i < gridItems.length; i++) {
 			const gridItem = gridItems[i];
-			// Listen for mouse-over = show inner-buttons
+			// Listen for mouse-over GridItems to show inner-buttons
 			gridItem.addEventListener("mouseover", function () {
-				let arrowBtns = this.getElementsByClassName("inner");
-				for (let i = 0; i < arrowBtns.length; i++) {
-					let arrowButton = arrowBtns[i];
+				let innerArrowBtns = this.getElementsByClassName("inner");
+				for (let i = 0; i < innerArrowBtns.length; i++) {
+					let arrowButton = innerArrowBtns[i];
 					arrowButton.style = "display: inline-block";
-				}
+				};
 			});
-			// Listen for mouse-out = hide inner-buttons
+			// Listen for mouse-out GridItems to hide inner-buttons
 			gridItem.addEventListener("mouseout", function () {
-				let arrowBtns = this.getElementsByClassName("inner");
-				for (let i = 0; i < arrowBtns.length; i++) {
-					let arrowButton = arrowBtns[i];
+				let innerArrowBtns = this.getElementsByClassName("inner");
+				for (let i = 0; i < innerArrowBtns.length; i++) {
+					let arrowButton = innerArrowBtns[i];
 					arrowButton.style = "display: none";
-				}
+				};
 			});
-		}
+		};
 	});
-	//console.log('ROWS: ', rows,'COLUMNS: ', columns);
+	
 </script>
 
 <div id={gridItem.id} class="section" style="grid-area: {gridArea} ;">
