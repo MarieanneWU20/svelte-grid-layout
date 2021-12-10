@@ -1,7 +1,13 @@
 <script>
+  // TODO: remove import when not console logging?
+  import { get } from "svelte/store";
+
   import ArrowButton from "./ArrowButton.svelte";
   import GridItem from "./GridItem.svelte";
+  import { gridDataStore, increaseRowHeight, decreaseRowHeight, calculateRows, calculateColumns } from "../store/gridDataStore";
 
+  console.log("IN Grid FROM store: ", get(gridDataStore));
+  
   export let gridData;
 
   function handleClick(id, placing, itemId) {
@@ -25,7 +31,6 @@
     }
   };
 
-  //TODO: import function from seperate file
   function addRow() {
     for (let i = 0; i < gridData.columns; i++) {
       let newGridItem = {
@@ -44,7 +49,6 @@
     console.log('AFTER down: ', gridData);
   };
 
-  //TODO: import function from seperate file
   function removeRow() {
     let rowToDelete = gridData.rows;
     let deleteIndex = gridData.gridItems.findIndex(e => e.gridArea.startRow === rowToDelete);
@@ -53,7 +57,6 @@
     gridData.rows--;
     console.log('AFTER up: ', gridData); 
   };
-    //TODO: import function from seperate file
 
   function addColumn() {
     for (let i = 0; i < gridData.rows; i++) {
@@ -72,7 +75,7 @@
     gridData.columns++;
     console.log('AFTER right: ', gridData);
   };
-  //TODO: import function from seperate file
+  
   function removeColumn() {
     let columnToDelete = gridData.columns;
     for (let i = 0; i < gridData.rows; i++) {
