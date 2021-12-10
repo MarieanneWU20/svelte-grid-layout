@@ -1,8 +1,7 @@
-import LayoutEditor  from "svelte-layout-editor";
+import App from "./App.svelte";
 
-const app = new LayoutEditor({
+const app = new App({
 	target: document.body,
-
 });
 
 export default app;
