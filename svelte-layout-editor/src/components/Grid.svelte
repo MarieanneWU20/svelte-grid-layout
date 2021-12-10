@@ -2,153 +2,164 @@
   import ArrowButton from "./ArrowButton.svelte";
   import GridItem from "./GridItem.svelte";
 
-  export let gridData;
+  import { gridDataStore, increaseHeightOfRow, decreaseHeightOfRow } from '../stores/gridData';
   
-  function handleClick(id, placing, itemId) {
+  // function handleClick(id, placing, itemId) {
 
-    if (placing === "outer") {
-        if (id === "down" ) {
-            addRow();
-        }
-        else if (id === "up" && gridData.rows > 3) {
-            removeRow();
-        }
-        else if (id === "right") {
-            addColumn();
-        }
-        else if (id === "left" && gridData.columns > 3) {
-            removeColumn();
-        }
-    }
-    else if (placing === "inner"){
+  //   if (placing === "outer") {
+  //       if (id === "down" ) {
+  //           addRow();
+  //       }
+  //       else if (id === "up" && gridData.rows > 3) {
+  //           removeRow();
+  //       }
+  //       else if (id === "right") {
+  //           addColumn();
+  //       }
+  //       else if (id === "left" && gridData.columns > 3) {
+  //           removeColumn();
+  //       }
+  //   }
+  //   else if (placing === "inner"){
 
-      let gridItems = gridData.gridItems;
-			let clickedItem = gridItems.find(e => e.id === itemId);
-			let clickedIndex = gridItems.findIndex(e => e.id === clickedItem.id);
-			let mergeItem;
-			let mergeIndex;
+  //     let gridItems = gridData.gridItems;
+	// 		let clickedItem = gridItems.find(e => e.id === itemId);
+	// 		let clickedIndex = gridItems.findIndex(e => e.id === clickedItem.id);
+	// 		let mergeItem;
+	// 		let mergeIndex;
     
-      if (id === "up") {
-        mergeItem = gridItems.find(e => e.gridArea.startRow === clickedItem.gridArea.startRow -1 && e.gridArea.startColumn === clickedItem.gridArea.startColumn);
+  //     if (id === "up") {
+  //       mergeItem = gridItems.find(e => e.gridArea.startRow === clickedItem.gridArea.startRow -1 && e.gridArea.startColumn === clickedItem.gridArea.startColumn);
         
-        clickedItem = {
-          id: `r${mergeItem.gridArea.startRow}c${clickedItem.gridArea.startColumn}`,
-          gridArea: {
-            startRow: mergeItem.gridArea.startRow,
-            startColumn: clickedItem.gridArea.startColumn,
-            endRow: clickedItem.gridArea.endRow,
-            endColumn: clickedItem.gridArea.endColumn
-          }
-        };
-      }
-      else if (id === "right") {
-				mergeItem = gridData.gridItems.find(e => e.gridArea.startRow === clickedItem.gridArea.startRow && e.gridArea.startColumn === clickedItem.gridArea.startColumn + 1);
+  //       clickedItem = {
+  //         id: `r${mergeItem.gridArea.startRow}c${clickedItem.gridArea.startColumn}`,
+  //         gridArea: {
+  //           startRow: mergeItem.gridArea.startRow,
+  //           startColumn: clickedItem.gridArea.startColumn,
+  //           endRow: clickedItem.gridArea.endRow,
+  //           endColumn: clickedItem.gridArea.endColumn
+  //         }
+  //       };
+  //     }
+  //     else if (id === "right") {
+	// 			mergeItem = gridData.gridItems.find(e => e.gridArea.startRow === clickedItem.gridArea.startRow && e.gridArea.startColumn === clickedItem.gridArea.startColumn + 1);
 				
-				clickedItem = {
-					id: `r${mergeItem.gridArea.startRow}c${clickedItem.gridArea.startColumn}`,
-					gridArea: {
-						startRow: clickedItem.gridArea.startRow,
-						startColumn: clickedItem.gridArea.startColumn,
-						endRow: clickedItem.gridArea.endRow,
-						endColumn: mergeItem.gridArea.endColumn
-				}};
-			}
-      else if( id === "down") {
-				mergeItem = gridData.gridItems.find(e => e.gridArea.startRow === clickedItem.gridArea.startRow + 1 && e.gridArea.startColumn === clickedItem.gridArea.startColumn);
+	// 			clickedItem = {
+	// 				id: `r${mergeItem.gridArea.startRow}c${clickedItem.gridArea.startColumn}`,
+	// 				gridArea: {
+	// 					startRow: clickedItem.gridArea.startRow,
+	// 					startColumn: clickedItem.gridArea.startColumn,
+	// 					endRow: clickedItem.gridArea.endRow,
+	// 					endColumn: mergeItem.gridArea.endColumn
+	// 			}};
+	// 		}
+  //     else if( id === "down") {
+	// 			mergeItem = gridData.gridItems.find(e => e.gridArea.startRow === clickedItem.gridArea.startRow + 1 && e.gridArea.startColumn === clickedItem.gridArea.startColumn);
 				
-				clickedItem = {
-					id: `r${clickedItem.gridArea.startRow}c${clickedItem.gridArea.startColumn}`,
-					gridArea: {
-						startRow: clickedItem.gridArea.startRow,
-						startColumn: clickedItem.gridArea.startColumn,
-						endRow: mergeItem.gridArea.endRow,
-						endColumn: mergeItem.gridArea.endColumn
-				}};
-			}
-      else if( id === "left") {
-				mergeItem = gridData.gridItems.find(e => e.gridArea.startRow === clickedItem.gridArea.startRow && e.gridArea.startColumn === clickedItem.gridArea.startColumn - 1);
+	// 			clickedItem = {
+	// 				id: `r${clickedItem.gridArea.startRow}c${clickedItem.gridArea.startColumn}`,
+	// 				gridArea: {
+	// 					startRow: clickedItem.gridArea.startRow,
+	// 					startColumn: clickedItem.gridArea.startColumn,
+	// 					endRow: mergeItem.gridArea.endRow,
+	// 					endColumn: mergeItem.gridArea.endColumn
+	// 			}};
+	// 		}
+  //     else if( id === "left") {
+	// 			mergeItem = gridData.gridItems.find(e => e.gridArea.startRow === clickedItem.gridArea.startRow && e.gridArea.startColumn === clickedItem.gridArea.startColumn - 1);
 				
-				clickedItem = {
-					id: `r${clickedItem.gridArea.startRow}c${mergeItem.gridArea.startColumn}`,
-					gridArea: {
-						startRow: clickedItem.gridArea.startRow,
-						startColumn: mergeItem.gridArea.startColumn,
-						endRow: clickedItem.gridArea.endRow,
-						endColumn: clickedItem.gridArea.endColumn
-				}};
-			}
-      gridItems.splice(clickedIndex, 1, clickedItem);
+	// 			clickedItem = {
+	// 				id: `r${clickedItem.gridArea.startRow}c${mergeItem.gridArea.startColumn}`,
+	// 				gridArea: {
+	// 					startRow: clickedItem.gridArea.startRow,
+	// 					startColumn: mergeItem.gridArea.startColumn,
+	// 					endRow: clickedItem.gridArea.endRow,
+	// 					endColumn: clickedItem.gridArea.endColumn
+	// 			}};
+	// 		}
+  //     gridItems.splice(clickedIndex, 1, clickedItem);
 
-      mergeIndex = gridItems.findIndex(e => e.id === mergeItem.id);
-      gridItems.splice(mergeIndex, 1);
+  //     mergeIndex = gridItems.findIndex(e => e.id === mergeItem.id);
+  //     gridItems.splice(mergeIndex, 1);
 
-      gridData.gridItems = gridItems;
-      console.log(gridData.gridItems);
-      console.log('Click on: ', clickedItem,'delete: ', mergeItem);
-    };
-  }
+  //     gridData.gridItems = gridItems;
+  //     console.log(gridData.gridItems);
+  //     console.log('Click on: ', clickedItem,'delete: ', mergeItem);
+  //   };
+  // }
 
-  //TODO: import function from seperate file
-  function addRow() {
-    for (let i = 0; i < gridData.columns; i++) {
-      let newGridItem = {
-        id: "",
-        gridArea:{
-          startRow: gridData.rows + 1,
-          startColumn: i + 1,
-          endRow: gridData.rows + 2,
-          endColumn: i + 2
-        }
-      };
-      newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
-      gridData.gridItems.push(newGridItem); 
-    };
-    gridData.rows++;
-    console.log('AFTER down: ', gridData);
-  };
+  // //TODO: import function from seperate file
+  // function addRow() {
+  //   for (let i = 0; i < gridData.columns; i++) {
+  //     let newGridItem = {
+  //       id: "",
+  //       gridArea:{
+  //         startRow: gridData.rows + 1,
+  //         startColumn: i + 1,
+  //         endRow: gridData.rows + 2,
+  //         endColumn: i + 2
+  //       }
+  //     };
+  //     newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
+  //     gridData.gridItems.push(newGridItem); 
+  //   };
+  //   gridData.rows++;
+  //   console.log('AFTER down: ', gridData);
+  // };
 
-  //TODO: import function from seperate file
-  function removeRow() {
-    let rowToDelete = gridData.rows;
-    let deleteIndex = gridData.gridItems.findIndex(e => e.gridArea.startRow === rowToDelete);
+  // //TODO: import function from seperate file
+  // function removeRow() {
+  //   let rowToDelete = gridData.rows;
+  //   let deleteIndex = gridData.gridItems.findIndex(e => e.gridArea.startRow === rowToDelete);
 
-    gridData.gridItems.splice(deleteIndex, gridData.columns);
-    gridData.rows--;
-    console.log('AFTER up: ', gridData); 
-  };
-    //TODO: import function from seperate file
+  //   gridData.gridItems.splice(deleteIndex, gridData.columns);
+  //   gridData.rows--;
+  //   console.log('AFTER up: ', gridData); 
+  // };
+  //   //TODO: import function from seperate file
 
-  function addColumn() {
-    for (let i = 0; i < gridData.rows; i++) {
-      let newGridItem = {
-        id: "",
-        gridArea:{
-          startRow: i + 1,
-          startColumn: gridData.columns + 1,
-          endRow: i + 2,
-          endColumn: gridData.columns + 2
-        }
-      };
-      newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
-      gridData.gridItems.push(newGridItem);
-    }
-    gridData.columns++;
-    console.log('AFTER right: ', gridData)
-  };
-  //TODO: import function from seperate file
-  function removeColumn() {
-    let columnToDelete = gridData.columns;
-    for (let i = 0; i < gridData.rows; i++) {
-        let start = gridData.gridItems.findIndex(element => element.gridArea.startColumn === columnToDelete);
-        gridData.gridItems.splice(start, 1);
-    };
-    gridData.columns--;
-    console.log('AFTER left: ', gridData)
-  };
+  // function addColumn() {
+  //   for (let i = 0; i < gridData.rows; i++) {
+  //     let newGridItem = {
+  //       id: "",
+  //       gridArea:{
+  //         startRow: i + 1,
+  //         startColumn: gridData.columns + 1,
+  //         endRow: i + 2,
+  //         endColumn: gridData.columns + 2
+  //       }
+  //     };
+  //     newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
+  //     gridData.gridItems.push(newGridItem);
+  //   }
+  //   gridData.columns++;
+  //   console.log('AFTER right: ', gridData)
+  // };
+  // //TODO: import function from seperate file
+  // function removeColumn() {
+  //   let columnToDelete = gridData.columns;
+  //   for (let i = 0; i < gridData.rows; i++) {
+  //       let start = gridData.gridItems.findIndex(element => element.gridArea.startColumn === columnToDelete);
+  //       gridData.gridItems.splice(start, 1);
+  //   };
+  //   gridData.columns--;
+  //   console.log('AFTER left: ', gridData)
+  // };
 
 </script>
 
-<div class="test-editor">
+<div>
+  {#each $gridDataStore.rows as row, rowIndex}
+  <p>row heigth: {row.height}</p>
+  <button on:click={() => decreaseHeightOfRow(rowIndex)}>UP</button>
+  {#each row.columns as column}
+    <p>column id: {column.id} width: {column.width}</p>
+  {/each}
+  <button on:click={() => increaseHeightOfRow(rowIndex)}>NER</button>
+  {/each}
+</div>
+
+<!-- <div class="test-editor">
   <div class="up-arrow">
     {#if gridData.rows > 3}
       <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="up"/> 
@@ -172,7 +183,7 @@
 	<div class="down-arrow">
   	<ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="down"/>
 	</div>
-</div>
+</div> -->
 
 <style>
   .test-editor {

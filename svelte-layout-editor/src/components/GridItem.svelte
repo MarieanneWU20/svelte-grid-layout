@@ -35,23 +35,23 @@
 </script>
 
 <div id={gridItem.id} class="section" style="grid-area: {gridArea} ;">
-	<div class="up-arrow">
+	<div class="up-arrow arrow">
 		{#if gridItem.gridArea.startRow !== 1}
 			<ArrowButton {onClick} itemId={gridItem.id} placing="inner" id="up" />
 		{/if}
 	</div>
 	<slot />
-	<div class="left-arrow">
+	<div class="left-arrow arrow">
 		{#if gridItem.gridArea.startColumn !== 1}
 			<ArrowButton {onClick} itemId={gridItem.id} placing="inner" id="left" />
 		{/if}
 	</div>
-	<div class="right-arrow">
+	<div class="right-arrow arrow">
 		{#if gridItem.gridArea.endColumn !== columns + 1}
 			<ArrowButton {onClick} itemId={gridItem.id} placing="inner" id="right" />
 		{/if}
 	</div>
-	<div class="down-arrow">
+	<div class="down-arrow arrow">
 		{#if gridItem.gridArea.endRow !== rows + 1}
 			<ArrowButton {onClick} itemId={gridItem.id} placing="inner" id="down" />
 		{/if}
@@ -67,6 +67,7 @@
 		text-align: center;
 		vertical-align: middle;
 	}
+
 	.up-arrow {
 		justify-content: center;
 		height: 25px;
