@@ -4,7 +4,7 @@
 
   import ArrowButton from "./ArrowButton.svelte";
   import GridItem from "./GridItem.svelte";
-  import { gridDataStore, increaseRowHeight, decreaseRowHeight, calculateRows, calculateColumns } from "../store/gridDataStore";
+  import { gridDataStore, increaseRowHeight, decreaseRowHeight, calculateRows, calculateColumns, generateGridArea } from "../store/gridDataStore";
   
   // TODO: remove when not console log not needed
   // let dataStore= get(gridDataStore)
@@ -75,8 +75,8 @@
       {/each} -->
       {#each $gridDataStore.rows as row, rowIndex}
         {#each row.columns as column, columnIndex}
-          {console.log("gridArea: ",rowIndex+1 , "/" , columnIndex+1,"/", rowIndex+1+row.height ,"/",columnIndex+1 + column.width,"")}
-          <p>gridArea: {rowIndex+1}/{columnIndex+1}/{rowIndex+1+row.height}/{columnIndex+1 + column.width}</p>
+          <!-- {console.log("gridArea: ",rowIndex+1 , "/" , columnIndex+1,"/", rowIndex+1+row.height ,"/",columnIndex+1 + column.width,"")} -->
+          <p>gridArea: { generateGridArea(rowIndex, columnIndex) }</p>
         {/each}
       {/each}
     </div>
