@@ -27,19 +27,19 @@ export function decreaseRowHeight(rowIndex) {
     gridDataStore.set(gridData);
 }
 
-export function calculateRows(gridData) {
-
-	console.log(gridData.rows);
+export function calculateRows() {
+	let gridData = get(gridDataStore);
 	let rowCount = 0;
 	
 	gridData.rows.forEach(row => {
-		rowCount +=
-		 row.height;
+		rowCount += row.height;
 	});
+	
 	return rowCount;
 }
 
-export function calculateColumns(gridData) {
+export function calculateColumns() {
+	let gridData = get(gridDataStore);
 	let columns = 0;
 	gridData.rows.forEach(row => {
 		let rowColumns = 0;
