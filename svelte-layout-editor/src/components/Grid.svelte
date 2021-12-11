@@ -15,6 +15,8 @@
   console.log("calculateRows: ", calculateRows(dataStore));
   console.log("calculateColumns: ", calculateColumns(dataStore));
 
+  console.log("IN Grid FROM store: ", get(gridDataStore));
+  
   export let gridData;
 
   function handleClick(id, placing, itemId) {
