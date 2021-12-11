@@ -3,7 +3,7 @@ import { writable, get } from "svelte/store";
 let defaultGridData = {
     rows: [
         { height: 1, columns: [{id: "r1c1", width: 1}, {id: "r1c2", width: 1}, {id: "r1c3", width: 1}]},
-        { height: 1, columns: [{id: "r2c1", width: 1}, {id: "r2c2", width: 1}, {id: "r2c3", width: 1}]},
+        { height: 2, columns: [{id: "r2c1", width: 1}, {id: "r2c2", width: 1}, {id: "r2c3", width: 1}]},
         { height: 1, columns: [{id: "r3c1", width: 1}, {id: "r3c2", width: 1}, {id: "r3c3", width: 1}]}
     ]
 }
@@ -27,23 +27,26 @@ export function decreaseRowHeight(rowIndex) {
     gridDataStore.set(gridData);
 }
 
-//TODO: fix forEach loop: "Cannot read properties of undefined (reading 'forEach')"
 export function calculateRows(gridData) {
-	let rows = 0;
+
+	console.log(gridData.rows);
+	let rowCount = 0;
+	
 	gridData.rows.forEach(row => {
-		rows + row.height;
+		rowCount +=
+		 row.height;
 	});
-	return rows;
+	return rowCount;
 }
-//TODO: fix forEach loop: "Cannot read properties of undefined (reading 'forEach')"
+
 export function calculateColumns(gridData) {
 	let columns = 0;
 	gridData.rows.forEach(row => {
 		let rowColumns = 0;
-		gridData.rows.columns.forEach(column => {
+		row.columns.forEach(column => {
 			rowColumns += column.width;
 		});
-		columns = Max.Max(columns, rowColumns);
+		columns = Math.max(columns, rowColumns);
 	});
 	return columns;
 }
