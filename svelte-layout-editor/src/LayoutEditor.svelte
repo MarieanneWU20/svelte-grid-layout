@@ -1,6 +1,8 @@
 <script>
     import Grid from './components/Grid.svelte';
-    //TODO: import object from seperate file
+    
+    // TODO: import object from seperate file
+
     $: gridData = {
         rows: 3,
         columns: 3,
@@ -79,8 +81,7 @@
                 }
             }
         ]
-    };
-    
+    }
 </script>
 
 <main>
