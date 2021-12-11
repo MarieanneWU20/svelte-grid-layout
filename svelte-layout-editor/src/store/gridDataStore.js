@@ -50,3 +50,14 @@ export function calculateColumns() {
 	});
 	return columns;
 }
+
+export function generateGridArea(rowIndex, columnIndex) {
+
+	let gridData = get(gridDataStore);
+	let height = gridData.rows[rowIndex].height;
+	let width = gridData.rows[rowIndex].columns[columnIndex].width;
+
+	let gridArea = `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+height}/${columnIndex+1+width}`
+
+	return gridArea;
+}
