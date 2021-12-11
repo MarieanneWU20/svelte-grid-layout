@@ -1,21 +1,22 @@
 <script>
   // TODO: remove import when not console logging?
-  import { get } from "svelte/store";
+  // import { get } from "svelte/store";
 
   import ArrowButton from "./ArrowButton.svelte";
   import GridItem from "./GridItem.svelte";
   import { gridDataStore, increaseRowHeight, decreaseRowHeight, calculateRows, calculateColumns } from "../store/gridDataStore";
+  
+  // TODO: remove when not console log not needed
+  // let dataStore= get(gridDataStore)
+  // console.log("IN Grid FROM store: ", dataStore);
 
-  let dataStore= get(gridDataStore)
-  console.log("IN Grid FROM store: ", dataStore);
+  // console.log("increaseRowHeight: ", increaseRowHeight(0));
+  // console.log("decreaseRowHeight: ", decreaseRowHeight(1));
 
-  console.log("increaseRowHeight: ", increaseRowHeight(0));
-  console.log("decreaseRowHeight: ", decreaseRowHeight(1));
+  // console.log("calculateRows: ", calculateRows());
+  // console.log("calculateColumns: ", calculateColumns());
 
-  console.log("calculateRows: ", calculateRows(dataStore));
-  console.log("calculateColumns: ", calculateColumns(dataStore));
-
-  export let gridData;
+  // export let gridData;
 
   function handleClick(id, placing, itemId) {
 
@@ -23,7 +24,7 @@
         if (id === "down" ) {
             addRow();
         }
-        else if (id === "up" && gridData.rows > 3) {
+        else if (id === "up" && calculateRows() > 3) {
             removeRow();
         }
         else if (id === "right") {
@@ -39,87 +40,55 @@
   };
 
   function addRow() {
-    for (let i = 0; i < gridData.columns; i++) {
-      let newGridItem = {
-        id: "",
-        gridArea:{
-          startRow: gridData.rows + 1,
-          startColumn: i + 1,
-          endRow: gridData.rows + 2,
-          endColumn: i + 2
-        }
-      };
-      newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
-      gridData.gridItems.push(newGridItem); 
-    };
-    gridData.rows++;
-    console.log('AFTER down: ', gridData);
+    console.log('Click down: ADD ROW ');
   };
 
   function removeRow() {
-    let rowToDelete = gridData.rows;
-    let deleteIndex = gridData.gridItems.findIndex(e => e.gridArea.startRow === rowToDelete);
-
-    gridData.gridItems.splice(deleteIndex, gridData.columns);
-    gridData.rows--;
-    console.log('AFTER up: ', gridData); 
+    console.log('Click up: REMOVE ROW ');
   };
 
   function addColumn() {
-    for (let i = 0; i < gridData.rows; i++) {
-      let newGridItem = {
-        id: "",
-        gridArea:{
-          startRow: i + 1,
-          startColumn: gridData.columns + 1,
-          endRow: i + 2,
-          endColumn: gridData.columns + 2
-        }
-      };
-      newGridItem.id = `r${newGridItem.gridArea.startRow}c${newGridItem.gridArea.startColumn}`;
-      gridData.gridItems.push(newGridItem);
-    }
-    gridData.columns++;
-    console.log('AFTER right: ', gridData);
+    console.log('Click right: ADD COLUMN ');
   };
   
   function removeColumn() {
-    let columnToDelete = gridData.columns;
-    for (let i = 0; i < gridData.rows; i++) {
-        let start = gridData.gridItems.findIndex(element => element.gridArea.startColumn === columnToDelete);
-        gridData.gridItems.splice(start, 1);
-    };
-    gridData.columns--;
-    console.log('AFTER left: ', gridData);
+    console.log('Click left: REMOVE COLUMN');
   };
 </script>
 
 <div class="editor">
   <div class="up-arrow">
-    {#if gridData.rows > 3}
+    {#if calculateRows() > 3}
       <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="up"/> 
     {/if}
   </div>
   <div class="row">
     <div class="left-arrow">
-      {#if gridData.columns > 3}
+      {#if calculateColumns() > 3}
         <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="left"/>
       {/if}
     </div>
     <div class="container">
+      <!-- 
       {#each gridData.gridItems as gridItem}
         <GridItem onClick={handleClick} gridItem={gridItem} rows={gridData.rows} columns={gridData.columns} gridArea="{gridItem.gridArea.startRow}/{gridItem.gridArea.startColumn}/{gridItem.gridArea.endRow}/{gridItem.gridArea.endColumn}">ID: {gridItem.id}</GridItem>
+      {/each} -->
+      {#each $gridDataStore.rows as row, rowIndex}
+        {#each row.columns as column, columnIndex}
+          {console.log("gridArea: ",rowIndex+1 , "/" , columnIndex+1,"/", rowIndex+1+row.height ,"/",columnIndex+1 + column.width,"")}
+          <p>gridArea: {rowIndex+1}/{columnIndex+1}/{rowIndex+1+row.height}/{columnIndex+1 + column.width}</p>
+        {/each}
       {/each}
     </div>
     <div class="right-arrow">
-      {#if gridData.columns < 5}
-      <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="right"/>
+      {#if calculateRows() < 5}
+        <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="right"/>
       {/if}
     </div>
   </div>
 	<div class="down-arrow">
-    {#if gridData.rows < 5}
-  	<ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="down"/>
+    {#if calculateColumns() < 5}
+  	  <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="down"/>
 	  {/if}
   </div>
 </div>
