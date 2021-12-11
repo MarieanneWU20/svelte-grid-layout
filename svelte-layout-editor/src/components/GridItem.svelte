@@ -3,9 +3,10 @@
 	import ArrowButton from "./ArrowButton.svelte";
 
 	export let gridArea;
-	export let gridItem;
-	export let rows;
-	export let columns;
+	export let id;
+	// export let gridItem;
+	// export let rows;
+	// export let columns;
 	export let onClick;
 
 	onMount(function () {
@@ -35,27 +36,27 @@
 	
 </script>
 
-<div id={gridItem.id} class="section" style="grid-area: {gridArea} ;">
+<div id={id} class="section" style="grid-area: {gridArea} ;">
 	<div class="up-arrow">
-		{#if gridItem.gridArea.startRow !== 1}
-			<ArrowButton {onClick} itemId={gridItem.id} placing="inner" id="up" />
-		{/if}
+		<!-- {#if gridItem.gridArea.startRow !== 1} -->
+			<ArrowButton {onClick} itemId={id} placing="inner" id="up" />
+		<!-- {/if} -->
 	</div>
 	<slot />
 	<div class="left-arrow">
-		{#if gridItem.gridArea.startColumn !== 1}
-			<ArrowButton {onClick} itemId={gridItem.id} placing="inner" id="left" />
-		{/if}
+		<!-- {#if gridItem.gridArea.startColumn !== 1} -->
+			<ArrowButton {onClick} itemId={id} placing="inner" id="left" />
+		<!-- {/if} -->
 	</div>
 	<div class="right-arrow">
-		{#if gridItem.gridArea.endColumn !== columns + 1}
-			<ArrowButton {onClick} itemId={gridItem.id} placing="inner" id="right" />
-		{/if}
+		<!-- {#if gridItem.gridArea.endColumn !== columns + 1} -->
+			<ArrowButton {onClick} itemId={id} placing="inner" id="right" />
+		<!-- {/if} -->
 	</div>
 	<div class="down-arrow">
-		{#if gridItem.gridArea.endRow !== rows + 1}
-			<ArrowButton {onClick} itemId={gridItem.id} placing="inner" id="down" />
-		{/if}
+		<!-- {#if gridItem.gridArea.endRow !== rows + 1} -->
+			<ArrowButton {onClick} itemId={id} placing="inner" id="down" />
+		<!-- {/if} -->
 	</div>
 </div>
 
