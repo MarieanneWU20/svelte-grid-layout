@@ -27,23 +27,26 @@ export function decreaseRowHeight(rowIndex) {
     gridDataStore.set(gridData);
 }
 
-//TODO: fix forEach loop: "Cannot read properties of undefined (reading 'forEach')"
 export function calculateRows(gridData) {
-	let rows = 0;
+
+	console.log(gridData.rows);
+	let rowCount = 0;
+	
 	gridData.rows.forEach(row => {
-		rows + row.height;
+		rowCount +=
+		 row.height;
 	});
-	return rows;
+	return rowCount;
 }
-//TODO: fix forEach loop: "Cannot read properties of undefined (reading 'forEach')"
+
 export function calculateColumns(gridData) {
 	let columns = 0;
 	gridData.rows.forEach(row => {
 		let rowColumns = 0;
-		gridData.rows.columns.forEach(column => {
+		row.columns.forEach(column => {
 			rowColumns += column.width;
 		});
-		columns = Max.Max(columns, rowColumns);
+		columns = Math.max(columns, rowColumns);
 	});
 	return columns;
 }

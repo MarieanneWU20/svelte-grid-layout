@@ -6,6 +6,15 @@
   import GridItem from "./GridItem.svelte";
   import { gridDataStore, increaseRowHeight, decreaseRowHeight, calculateRows, calculateColumns } from "../store/gridDataStore";
 
+  let dataStore= get(gridDataStore)
+  console.log("IN Grid FROM store: ", dataStore);
+
+  console.log("increaseRowHeight: ", increaseRowHeight(0));
+  console.log("decreaseRowHeight: ", decreaseRowHeight(1));
+
+  console.log("calculateRows: ", calculateRows(dataStore));
+  console.log("calculateColumns: ", calculateColumns(dataStore));
+
   console.log("IN Grid FROM store: ", get(gridDataStore));
   
   export let gridData;
