@@ -12,19 +12,46 @@ export const gridDataStore = writable(defaultGridData);
 
 export function increaseRowHeight(rowIndex) {
     let gridData = get(gridDataStore);
+	let newGridData = { rows: []};
 
     gridData.rows[rowIndex].height++;
-
-    gridDataStore.set(gridData);
+// Insert blank row: 
+	//...for every row in gridData...
+	for (let i = 0; i < gridData.rows.length; i++) {
+		const row = gridData.rows[i];
+		//...add row to newGridData...
+		newGridData.rows.push(row); 
+		//...if current row should increase add an extra row...
+		if (i === rowIndex) {
+			newGridData.rows.push({ height: 1, columns: []});
+		}
+	}
+	//...set gridDataStore to newGridData
+    gridDataStore.set(newGridData);
+	console.log('CLICK on increaseRowHeight: ', get(gridDataStore));
 }
 
 export function decreaseRowHeight(rowIndex) {
     let gridData = get(gridDataStore);
-    let newHeight = gridData.rows[rowIndex].height-1;
+	let newGridData = { rows: []};
 
-    gridData.rows[rowIndex].height = Math.max(1, newHeight);
+	if (gridData.rows[rowIndex].height !== 1) {
+		let newHeight = gridData.rows[rowIndex].height-1;
 
-    gridDataStore.set(gridData);
+		gridData.rows[rowIndex].height = Math.max(1, newHeight);
+	//Remove those blank rows:
+		//...for every row in gridData...
+		for (let i = 0; i < gridData.rows.length; i++) {
+			const row = gridData.rows[i];
+			//...if current row isn't the blank row add row to newGridData...
+			if (i !== rowIndex + 1) {
+				newGridData.rows.push(row); 
+			}
+		}
+		//...set gridDataStore to newGridData
+		gridDataStore.set(newGridData);
+	}
+	console.log('CLICK on decreaseRowHeight: ', get(gridDataStore));
 }
 
 export function calculateRows() {
@@ -49,15 +76,4 @@ export function calculateColumns() {
 		columns = Math.max(columns, rowColumns);
 	});
 	return columns;
-}
-
-export function generateGridArea(rowIndex, columnIndex) {
-
-	let gridData = get(gridDataStore);
-	let height = gridData.rows[rowIndex].height;
-	let width = gridData.rows[rowIndex].columns[columnIndex].width;
-
-	let gridArea = `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+height}/${columnIndex+1+width}`
-
-	return gridArea;
 }

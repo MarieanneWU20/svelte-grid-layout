@@ -1,116 +1,54 @@
 <script>
-  // TODO: remove import when not console logging?
-  // import { get } from "svelte/store";
-
   import ArrowButton from "./ArrowButton.svelte";
-  // import GridItem from "./GridItem.svelte";
-  import { gridDataStore, increaseRowHeight, decreaseRowHeight, calculateRows, calculateColumns, generateGridArea } from "../store/gridDataStore";
-  
-  // TODO: remove when not console log not needed
-  // let dataStore= get(gridDataStore)
-  // console.log("IN Grid FROM store: ", dataStore);
-
-  // console.log("increaseRowHeight: ", increaseRowHeight(0));
-  // console.log("decreaseRowHeight: ", decreaseRowHeight(1));
-
-  // console.log("calculateRows: ", calculateRows());
-  // console.log("calculateColumns: ", calculateColumns());
-
-  // export let gridData;
-
-  function handleClick(id, placing, itemId) {
-
-    if (placing === "outer") {
-        if (id === "down" ) {
-            addRow();
-        }
-        else if (id === "up" && calculateRows() > 3) {
-            removeRow();
-        }
-        else if (id === "right") {
-            addColumn();
-        }
-        else if (id === "left" && gridData.columns > 3) {
-            removeColumn();
-        }
-    }
-    else {
-        console.log('Click on: ', itemId+id)
-    }
-  };
-
-  function addRow() {
-    console.log('Click down: ADD ROW ');
-  };
-
-  function removeRow() {
-    console.log('Click up: REMOVE ROW ');
-  };
-
-  function addColumn() {
-    console.log('Click right: ADD COLUMN ');
-  };
-  
-  function removeColumn() {
-    console.log('Click left: REMOVE COLUMN');
-  };
+  import { gridDataStore, calculateRows, calculateColumns } from "../store/gridDataStore";
 </script>
 
 <div class="editor">
   <div class="up-arrow">
-    {#if calculateRows() > 3}
-      <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="up"/> 
-    {/if}
+    <!-- {#if calculateRows() > 3} -->
+      <ArrowButton index=N/A placing="outer" id="up"/> 
+    <!-- {/if} -->
   </div>
   <div class="row">
     <div class="left-arrow">
-      {#if calculateColumns() > 3}
-        <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="left"/>
-      {/if}
+      <!-- {#if calculateColumns() > 3} -->
+        <ArrowButton index=N/A placing="outer" id="left"/>
+      <!-- {/if} -->
     </div>
     <div class="container">
-      <!-- 
-      {#each gridData.gridItems as gridItem}
-        <GridItem onClick={handleClick} gridItem={gridItem} rows={gridData.rows} columns={gridData.columns} gridArea="{gridItem.gridArea.startRow}/{gridItem.gridArea.startColumn}/{gridItem.gridArea.endRow}/{gridItem.gridArea.endColumn}">ID: {gridItem.id}</GridItem>
-      {/each} -->
       {#each $gridDataStore.rows as row, rowIndex}
         {#each row.columns as column, columnIndex}
-        <div id={column.id} class="section" style="grid-area: {generateGridArea(rowIndex, columnIndex)} ;">
-          <div class="up-arrow">
-            {#if rowIndex !== 0}
-              <ArrowButton onClick={handleClick} itemId={column.id} placing="inner" id="up" />
-            {/if}
+        
+          <div id={column.id} class="section" style="grid-area: { `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}` } ;">
+            <div class="up-arrow">
+              {#if columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
+                <ArrowButton placing="inner" index={rowIndex} id="up" />
+              {/if}
+            </div>
+            <div class="left-arrow"> 
+              <ArrowButton placing="inner" index={columnIndex} id="left" />
+            </div>
+            <div class="right-arrow">
+              <ArrowButton placing="inner" index={columnIndex} id="right" />
+            </div>
+            <div class="down-arrow">
+              {#if columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
+                <ArrowButton placing="inner" index={rowIndex}  id="down" />
+              {/if}
+            </div>
           </div>
-          <p>ID: {column.id}</p>
-          <div class="left-arrow">
-            {#if columnIndex !== 0}
-              <ArrowButton onClick={handleClick} itemId={column.id} placing="inner" id="left" />
-            {/if}
-          </div>
-          <div class="right-arrow">
-            {#if columnIndex + 1 !== calculateColumns() }
-              <ArrowButton onClick={handleClick} itemId={column.id} placing="inner" id="right" />
-            {/if}
-          </div>
-          <div class="down-arrow">
-            {#if rowIndex + 1 !== calculateRows()}
-              <ArrowButton onClick={handleClick} itemId={column.id} placing="inner" id="down" />
-            {/if}
-          </div>
-        </div>
-          <!-- <GridItem onClick={handleClick} id={column.id} gridArea={ generateGridArea(rowIndex, columnIndex) }>ID: {column.id}</GridItem> -->
         {/each}
       {/each}
     </div>
     <div class="right-arrow">
       {#if calculateRows() < 5}
-        <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="right"/>
+        <ArrowButton index=N/A placing="outer" id="right"/>
       {/if}
     </div>
   </div>
 	<div class="down-arrow">
     {#if calculateColumns() < 5}
-  	  <ArrowButton onClick={handleClick} itemId="editor" placing="outer" id="down"/>
+  	  <ArrowButton index=N/A placing="outer" id="down"/>
 	  {/if}
   </div>
 </div>
