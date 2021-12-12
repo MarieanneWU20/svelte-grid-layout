@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	import { onMount } from "svelte";
 	import ArrowButton from "./ArrowButton.svelte";
 
@@ -34,33 +34,33 @@
 		};
 	});
 	
-</script>
+</script> -->
 
-<div id={id} class="section" style="grid-area: {gridArea} ;">
+<!-- <div id={id} class="section" style="grid-area: {gridArea} ;">
 	<div class="up-arrow">
-		<!-- {#if gridItem.gridArea.startRow !== 1} -->
+		{#if gridItem.gridArea.startRow !== 1}
 			<ArrowButton {onClick} itemId={id} placing="inner" id="up" />
-		<!-- {/if} -->
+		{/if}
 	</div>
 	<slot />
 	<div class="left-arrow">
-		<!-- {#if gridItem.gridArea.startColumn !== 1} -->
+		{#if gridItem.gridArea.startColumn !== 1}
 			<ArrowButton {onClick} itemId={id} placing="inner" id="left" />
-		<!-- {/if} -->
+		{/if}
 	</div>
 	<div class="right-arrow">
-		<!-- {#if gridItem.gridArea.endColumn !== columns + 1} -->
+		{#if gridItem.gridArea.endColumn !== columns + 1}
 			<ArrowButton {onClick} itemId={id} placing="inner" id="right" />
-		<!-- {/if} -->
+		{/if}
 	</div>
 	<div class="down-arrow">
-		<!-- {#if gridItem.gridArea.endRow !== rows + 1} -->
+		{#if gridItem.gridArea.endRow !== rows + 1}
 			<ArrowButton {onClick} itemId={id} placing="inner" id="down" />
-		<!-- {/if} -->
+		{/if}
 	</div>
-</div>
+</div> -->
 
-<style>
+<!-- <style>
 	div {
 		width: auto;
 		height: auto;
@@ -100,4 +100,4 @@
 		padding: 20px;
 		}
 	}
-</style>
+</style> -->

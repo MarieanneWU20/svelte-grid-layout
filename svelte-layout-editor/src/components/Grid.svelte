@@ -3,7 +3,7 @@
   // import { get } from "svelte/store";
 
   import ArrowButton from "./ArrowButton.svelte";
-  import GridItem from "./GridItem.svelte";
+  // import GridItem from "./GridItem.svelte";
   import { gridDataStore, increaseRowHeight, decreaseRowHeight, calculateRows, calculateColumns, generateGridArea } from "../store/gridDataStore";
   
   // TODO: remove when not console log not needed
@@ -75,7 +75,30 @@
       {/each} -->
       {#each $gridDataStore.rows as row, rowIndex}
         {#each row.columns as column, columnIndex}
-          <GridItem onClick={handleClick} id={column.id} gridArea={ generateGridArea(rowIndex, columnIndex) }>ID: {column.id}</GridItem>
+        <div id={column.id} class="section" style="grid-area: {generateGridArea(rowIndex, columnIndex)} ;">
+          <div class="up-arrow">
+            {#if rowIndex !== 0}
+              <ArrowButton onClick={handleClick} itemId={column.id} placing="inner" id="up" />
+            {/if}
+          </div>
+          <p>ID: {column.id}</p>
+          <div class="left-arrow">
+            {#if columnIndex !== 0}
+              <ArrowButton onClick={handleClick} itemId={column.id} placing="inner" id="left" />
+            {/if}
+          </div>
+          <div class="right-arrow">
+            {#if columnIndex + 1 !== calculateColumns() }
+              <ArrowButton onClick={handleClick} itemId={column.id} placing="inner" id="right" />
+            {/if}
+          </div>
+          <div class="down-arrow">
+            {#if rowIndex + 1 !== calculateRows()}
+              <ArrowButton onClick={handleClick} itemId={column.id} placing="inner" id="down" />
+            {/if}
+          </div>
+        </div>
+          <!-- <GridItem onClick={handleClick} id={column.id} gridArea={ generateGridArea(rowIndex, columnIndex) }>ID: {column.id}</GridItem> -->
         {/each}
       {/each}
     </div>
@@ -97,7 +120,7 @@
     width: 100%;
     height: auto;
   }
-  .up-arrow {
+  .editor>.up-arrow {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -106,7 +129,7 @@
   .row {
     padding: 0 20px;
   }
-  .left-arrow {
+  .row>.left-arrow {
     position: fixed;
     left: -15px;
     top: 25%;
@@ -122,24 +145,56 @@
     grid-auto-rows: 1fr 1fr;
     gap: 0.6rem 0.6rem;
   }
-  .right-arrow {
+  .row>.right-arrow {
     position: fixed;
     right: 0;
     top: 25%;
 	}
-	.down-arrow {
+	.editor>.down-arrow {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		margin: 10px 0 30px 0;
 	}
+  .section {
+		width: auto;
+		height: auto;
+		border-radius: 20px;
+		background-color: #ffffff;
+		text-align: center;
+		vertical-align: middle;
+	}
+	.section>.up-arrow {
+		justify-content: center;
+		height: 25px;
+	}
+	.section>.left-arrow {
+		float: left;
+		width: 25px;
+		height: 25px;
+	}
+	.section>.right-arrow {
+		float: right;
+		width: 25px;
+		height: 45px;
+	}
+	.section>.down-arrow {
+		justify-content: center;
+		height: 25px;
+		margin-top: 20%;
+	}
+	
   @media screen and (min-width: 480px) {
     .container {
       padding: 15px;
       gap: 0.8rem 0.8rem;
       min-height: 75vh;
     }
-    .left-arrow,
+    .section{
+		border-radius: 25px;  
+		padding: 15px;
+	}
+  .container .left-arrow,
     .right-arrow {
       top: 35%;
     }
@@ -150,13 +205,17 @@
       gap: 1rem 1rem;
       min-height: 100vh;
     }
-    .left-arrow,
+    .section{
+		border-radius: 30px;  
+		padding: 20px;
+		}
+    .container .left-arrow,
     .right-arrow {
       top: 37%;
     }
   }
   @media screen and (min-width: 1024px) {
-    .left-arrow,
+    .container .left-arrow,
     .right-arrow {
       top: 40%;
   }
