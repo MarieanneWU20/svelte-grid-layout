@@ -21,12 +21,14 @@
         
           <div id={column.id} class="section" style="grid-area: { `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}` } ;">
             <div class="up-arrow">
-              {#if columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
+              {#if row.height > 1 && columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
                 <ArrowButton placing="inner" index={rowIndex} id="up" />
               {/if}
             </div>
             <div class="left-arrow"> 
-              <ArrowButton placing="inner" index={columnIndex} id="left" />
+              <!-- {#if column.width > 1} -->
+                <ArrowButton placing="inner" index={columnIndex} id="left" />
+              <!-- {/if} -->
             </div>
             <div class="right-arrow">
               <ArrowButton placing="inner" index={columnIndex} id="right" />

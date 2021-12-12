@@ -35,23 +35,37 @@ export function decreaseRowHeight(rowIndex) {
     let gridData = get(gridDataStore);
 	let newGridData = { rows: []};
 
-	if (gridData.rows[rowIndex].height !== 1) {
-		let newHeight = gridData.rows[rowIndex].height-1;
+	let newHeight = gridData.rows[rowIndex].height-1;
 
-		gridData.rows[rowIndex].height = Math.max(1, newHeight);
-	//Remove those blank rows:
-		//...for every row in gridData...
-		for (let i = 0; i < gridData.rows.length; i++) {
-			const row = gridData.rows[i];
-			//...if current row isn't the blank row add row to newGridData...
-			if (i !== rowIndex + 1) {
-				newGridData.rows.push(row); 
-			}
+	gridData.rows[rowIndex].height = Math.max(1, newHeight);
+//Remove those blank rows:
+	//...for every row in gridData...
+	for (let i = 0; i < gridData.rows.length; i++) {
+		const row = gridData.rows[i];
+		//...if current row isn't the blank row add row to newGridData...
+		if (i !== rowIndex + 1) {
+			newGridData.rows.push(row); 
 		}
-		//...set gridDataStore to newGridData
-		gridDataStore.set(newGridData);
 	}
+	//...set gridDataStore to newGridData
+	gridDataStore.set(newGridData);
 	console.log('CLICK on decreaseRowHeight: ', get(gridDataStore));
+}
+
+export function increaseColmnWidth(columnIndex) {
+	let gridData = get(gridDataStore);
+	let newGridData = { rows: []};
+//TODO: Increaese column width
+	//Insert blank column: 
+	console.log('Increaese width on column nr:',columnIndex);
+}
+
+export function decreaseColmnWidth(columnIndex) {
+	let gridData = get(gridDataStore);
+	let newGridData = { rows: []};
+//TODO: Decreaese column width
+	//Remove blank column: 
+	console.log('Decreaese width on column nr:',columnIndex);
 }
 
 export function calculateRows() {
