@@ -75,8 +75,7 @@
       {/each} -->
       {#each $gridDataStore.rows as row, rowIndex}
         {#each row.columns as column, columnIndex}
-          <!-- {console.log("gridArea: ",rowIndex+1 , "/" , columnIndex+1,"/", rowIndex+1+row.height ,"/",columnIndex+1 + column.width,"")} -->
-          <p>gridArea: { generateGridArea(rowIndex, columnIndex) }</p>
+          <GridItem onClick={handleClick} id={column.id} gridArea={ generateGridArea(rowIndex, columnIndex) }>ID: {column.id}</GridItem>
         {/each}
       {/each}
     </div>
