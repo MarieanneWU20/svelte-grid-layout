@@ -3,7 +3,7 @@
   // import { get } from "svelte/store";
 
   import ArrowButton from "./ArrowButton.svelte";
-  import GridItem from "./GridItem.svelte";
+  // import GridItem from "./GridItem.svelte";
   import { gridDataStore, increaseRowHeight, decreaseRowHeight, calculateRows, calculateColumns, generateGridArea } from "../store/gridDataStore";
   
   // TODO: remove when not console log not needed
