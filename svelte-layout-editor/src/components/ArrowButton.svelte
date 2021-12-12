@@ -1,11 +1,11 @@
 <script>
     import { onMount } from "svelte";
+    import { decreaseRowHeight, increaseRowHeight } from "../store/gridDataStore";
     import Arrow from "./Arrow.svelte";
 
     export let placing;
+    export let index;
     export let id;
-    export let itemId;
-    export let onClick;
 
     onMount(function () {
 
@@ -33,27 +33,41 @@
     });
 
     function handleClick() {
-        onClick(id, placing, itemId)
+        if (placing === "outer") {
+            if (id === "up") {
+                console.log('Remove row');
+            }
+            else if (id === "down") {
+                console.log('Add row');
+            }
+            else if (id === "left") {
+                console.log('Remove column');
+            }
+            else if (id === "right") {
+                console.log('Add column');
+                
+            }
+        }
+        else {
+            if (id === "up") {
+                decreaseRowHeight(index);
+            }
+            else if (id === "down") {
+                increaseRowHeight(index);
+            }
+            else if (id === "left") {
+                console.log('Decrease column width');
+            }
+            else if (id === "right") {
+                console.log('Increase column width');
+            }
+        }
     }
 </script>
 
-{#if id === "up"}
-    <button on:click={handleClick} class={placing}> 
-        <Arrow placing={placing} id={id} />
-    </button>
-{:else if id === "left"}
-    <button on:click={handleClick} class={placing} > 
-        <Arrow placing={placing} id={id} />
-    </button>
-{:else if id === "down"}
-    <button on:click={handleClick} class={placing} > 
-        <Arrow placing={placing} id={id}/>
-    </button>
-{:else if id === "right"}
-    <button on:click={handleClick} class={placing} > 
-        <Arrow placing={placing} id={id} />
-    </button>
-{/if}
+<button on:click={handleClick} class={placing} > 
+    <Arrow {placing} id={id} />
+</button>
 
 <style>
     button { 
