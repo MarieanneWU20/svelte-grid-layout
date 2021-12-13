@@ -18,7 +18,7 @@
     <div class="container">
       {#each $gridDataStore.rows as row, rowIndex}
         {#each row.columns as column, columnIndex}
-        
+          {#if column.width !== 0} 
           <div id={column.id} class="section" style="grid-area: { `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}` } ;">
             <div class="up-arrow">
               {#if row.height > 1 && columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
@@ -26,9 +26,9 @@
               {/if}
             </div>
             <div class="left-arrow"> 
-              <!-- {#if column.width > 1} -->
+              {#if column.width > 1}
                 <ArrowButton placing="inner" index={columnIndex} id="left" />
-              <!-- {/if} -->
+              {/if}
             </div>
             <div class="right-arrow">
               <ArrowButton placing="inner" index={columnIndex} id="right" />
@@ -39,6 +39,7 @@
               {/if}
             </div>
           </div>
+          {/if}
         {/each}
       {/each}
     </div>

@@ -2,9 +2,9 @@ import { writable, get } from "svelte/store";
 
 let defaultGridData = {
     rows: [
-        { height: 1, columns: [{id: "r1c1", width: 1}, {id: "r1c2", width: 1}, {id: "r1c3", width: 1}]},
-        { height: 1, columns: [{id: "r2c1", width: 1}, {id: "r2c2", width: 1}, {id: "r2c3", width: 1}]},
-        { height: 1, columns: [{id: "r3c1", width: 1}, {id: "r3c2", width: 1}, {id: "r3c3", width: 1}]}
+        { height: 1, columns: [{ width: 1}, { width: 1}, { width: 1}]},
+        { height: 1, columns: [{ width: 1}, { width: 1}, { width: 1}]},
+        { height: 1, columns: [{ width: 1}, { width: 1}, { width: 1}]}
     ]
 }
 
@@ -57,7 +57,20 @@ export function increaseColmnWidth(columnIndex) {
 	let newGridData = { rows: []};
 //TODO: Increaese column width
 	//Insert blank column: 
-	console.log('Increaese width on column nr:',columnIndex);
+	for (let i = 0; i < gridData.rows.length; i++) {
+		const row = gridData.rows[i];
+		for (let j = 0; j < row.columns.length; j++) {
+			const column = row.columns[j];
+			
+			if (j === columnIndex ) {
+				column.width++;
+				row.columns.push({ width: 1})
+			}
+		}
+		newGridData.rows.push(row); 
+	}
+	gridDataStore.set(newGridData);
+	console.log('Increaese width on column nr:', get(gridDataStore));
 }
 
 export function decreaseColmnWidth(columnIndex) {
