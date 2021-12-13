@@ -1,10 +1,6 @@
 <script>
     import { onMount } from "svelte";
-<<<<<<< HEAD
     import { decreaseColmnWidth, decreaseRowHeight, increaseColmnWidth, increaseRowHeight } from "../store/gridDataStore";
-=======
-    import { decreaseRowHeight, increaseRowHeight } from "../store/gridDataStore";
->>>>>>> master
     import Arrow from "./Arrow.svelte";
 
     export let placing;
@@ -60,17 +56,10 @@
                 increaseRowHeight(index);
             }
             else if (id === "left") {
-<<<<<<< HEAD
                 decreaseColmnWidth(index);
             }
             else if (id === "right") {
                 increaseColmnWidth(index);
-=======
-                console.log('Decrease column width');
-            }
-            else if (id === "right") {
-                console.log('Increase column width');
->>>>>>> master
             }
         }
     }
