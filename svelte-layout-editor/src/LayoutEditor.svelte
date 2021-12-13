@@ -1,7 +1,9 @@
 <script>
 	import ArrowButton from "./components/ArrowButton.svelte";
 	import { gridDataStore, calculateRows, calculateColumns } from "./store/gridDataStore";
-  </script>
+
+	//TODO: Try to sent content via props
+</script>
   
   <div class="editor">
 	<div class="up-arrow">
