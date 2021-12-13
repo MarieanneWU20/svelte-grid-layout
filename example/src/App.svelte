@@ -5,22 +5,19 @@
 
 <h1>Cool App</h1>
 <main>
-    <LayoutEditor pics={[
+    <!-- <LayoutEditor pics={[
         ["https://gillas.nu/wp-content/uploads/2016/06/roliga-bilder-om-datorn-tar-en-bild-efter-tre-felaktiga-inloggningsforsok-01.jpg", "https://gillas.nu/wp-content/uploads/2016/06/roliga-bilder-om-datorn-tar-en-bild-efter-tre-felaktiga-inloggningsforsok-01.jpg"],
         ["https://gillas.nu/wp-content/uploads/2016/06/roliga-bilder-om-datorn-tar-en-bild-efter-tre-felaktiga-inloggningsforsok-01.jpg"],
         ["https://gillas.nu/wp-content/uploads/2016/06/roliga-bilder-om-datorn-tar-en-bild-efter-tre-felaktiga-inloggningsforsok-01.jpg"]
         ]} />
-    <LayoutEditor pics={{
-        "r0c1": "test",
-        "r1c0": "test2",
-    }} />
-
-    <Grid>
+    <LayoutEditor  /> -->
+    <LayoutEditor/>
+    <!--<Grid>
         <Row>
             <Column><p>Test1</p></Column>
             <Column><p>Test2</p></Column>
         </Row>
-    </Grid>
+    </Grid>-->
 </main>
 
 <style>

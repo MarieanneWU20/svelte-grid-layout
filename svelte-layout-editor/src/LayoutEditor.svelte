@@ -1,9 +1,12 @@
 <script>
 	import { onMount } from "svelte";
 	import ArrowButton from "./components/ArrowButton.svelte";
+	import Row from "./components/Row.svelte";
+	import Column from "./components/Column.svelte";
 	import { gridDataStore, calculateRows, calculateColumns } from "./store/gridDataStore";
 
-	export let pics // matrix of urls to pictures [[pic1, pic3], [pic2, pic4]];
+	// export let pics
+	 // matrix of urls to pictures [[pic1, pic3], [pic2, pic4]];
 
 	onMount(() => {
 		$gridDataStore = { rows: [{ columns: [{}, {}] }] };
@@ -23,26 +26,45 @@
 		 <!-- {/if} -->
 	  </div>
 	  <div class="container">
-		 {#each $gridDataStore.rows as row, rowIndex}
+		 {#each $gridDataStore.rows as row, rowIndex} 
+		 <Row>
 			{#each row.columns as column, columnIndex}
-
-			  <div id={column.id} class="section" style="grid-area: { `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}` } ;">
+			<div id={column.id} class="section" style="grid-area: { `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}` } ;">
+				<Column>
+					<div class="up-arrow">
+						{#if row.height > 1 && columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
+						  <ArrowButton placing="inner" index={rowIndex} id="up" />
+						{/if}
+					 </div>
+					 <div class="left-arrow">
+						{#if column.width > 1}
+						  <ArrowButton placing="inner" index={columnIndex} id="left" />
+						{/if}
+					 </div>
+					 <div class="right-arrow">
+						<ArrowButton placing="inner" index={columnIndex} id="right" />
+					 </div>
+					 <div class="down-arrow">
+						{#if columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
+						  <ArrowButton placing="inner" index={rowIndex}  id="down" />
+						{/if}
+					 </div>
+				</Column>
+			</div>
+			
+			  <!-- <div id={column.id} class="section" style="grid-area: { `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}` } ;">
 				 <div class="up-arrow">
 					{#if row.height > 1 && columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
 					  <ArrowButton placing="inner" index={rowIndex} id="up" />
 					{/if}
 				 </div>
-				 
-				 <!-- INNEHÅLL -->
 				 {#if (rowIndex < pics.length && columnIndex < pics[rowIndex].length)}
 				 	<img src={pics[rowIndex][columnIndex]} alt="bild" />
 				 {/if}
-
-				 <!-- <slot name={`r${rowIndex}c${columnIndex}`}/> -->
 				 <div class="left-arrow">
-					<!-- {#if column.width > 1} -->
+					{#if column.width > 1}
 					  <ArrowButton placing="inner" index={columnIndex} id="left" />
-					<!-- {/if} -->
+					{/if}
 				 </div>
 				 <div class="right-arrow">
 					<ArrowButton placing="inner" index={columnIndex} id="right" />
@@ -52,8 +74,9 @@
 					  <ArrowButton placing="inner" index={rowIndex}  id="down" />
 					{/if}
 				 </div>
-			  </div>
+			  </div> -->
 			{/each}
+			</Row>
 		 {/each}
 	  </div>
 	  <div class="right-arrow">
