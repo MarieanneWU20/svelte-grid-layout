@@ -25,6 +25,8 @@
                 <ArrowButton placing="inner" index={rowIndex} id="up" />
               {/if}
             </div>
+            <slot name="1"/>
+            <p>Test</p>
             <div class="left-arrow"> 
               <!-- {#if column.width > 1} -->
                 <ArrowButton placing="inner" index={columnIndex} id="left" />

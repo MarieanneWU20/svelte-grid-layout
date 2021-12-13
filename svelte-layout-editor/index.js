@@ -1,4 +1,6 @@
 
-import LayoutEditor from "./src/LayoutEditor.svelte";
+import LayoutEditorComponent from "./src/LayoutEditor.svelte";
+import LayoutItemComponent from "./src/LayoutItem.svelte";
 
-export default LayoutEditor;
+export const LayoutEditor = LayoutEditorComponent;
+export const LayoutItem = LayoutItemComponent;
