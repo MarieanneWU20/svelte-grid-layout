@@ -44,15 +44,15 @@
       {/each}
     </div>
     <div class="right-arrow">
-      {#if calculateRows() < 5}
+      <!-- {#if calculateColumns() <=  5} -->
         <ArrowButton index=N/A placing="outer" id="right"/>
-      {/if}
+      <!-- {/if} -->
     </div>
   </div>
 	<div class="down-arrow">
-    {#if calculateColumns() < 5}
+    <!-- {#if calculateRows() <= 5} -->
   	  <ArrowButton index=N/A placing="outer" id="down"/>
-	  {/if}
+	  <!-- {/if} -->
   </div>
 </div>
 

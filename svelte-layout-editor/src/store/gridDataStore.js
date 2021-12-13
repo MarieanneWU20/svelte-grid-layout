@@ -10,6 +10,14 @@ let defaultGridData = {
 
 export const gridDataStore = writable(defaultGridData);
 
+export function addRow() {
+	let gridData = get(gridDataStore);
+	gridData.rows.push({height: 1, columns: [{ width: 1}, { width: 1}, { width: 1}]});
+	
+	gridDataStore.set(gridData);
+	console.log('CLICK on addRow: ', get(gridDataStore));
+}
+
 export function increaseRowHeight(rowIndex) {
     let gridData = get(gridDataStore);
 	let newGridData = { rows: []};
