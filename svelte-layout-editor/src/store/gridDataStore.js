@@ -2,9 +2,9 @@ import { writable, get } from "svelte/store";
 
 let defaultGridData = {
     rows: [
-        { height: 1, columns: [{id: "r1c1", width: 1}, {id: "r1c2", width: 1}, {id: "r1c3", width: 1}]},
-        { height: 1, columns: [{id: "r2c1", width: 1}, {id: "r2c2", width: 1}, {id: "r2c3", width: 1}]},
-        { height: 1, columns: [{id: "r3c1", width: 1}, {id: "r3c2", width: 1}, {id: "r3c3", width: 1}]}
+        { height: 1, columns: [{ width: 1}, { width: 1}, { width: 1}]},
+        { height: 1, columns: [{ width: 1}, { width: 1}, { width: 1}]},
+        { height: 1, columns: [{ width: 1}, { width: 1}, { width: 1}]}
     ]
 }
 
@@ -21,9 +21,12 @@ export function increaseRowHeight(rowIndex) {
 		const row = gridData.rows[i];
 		//...add row to newGridData...
 		newGridData.rows.push(row); 
-		//...if current row should increase add an extra row...
+		//...if current row should increase... 
+		//TODO: add condition for last row ? maby expand upwards instead?
 		if (i === rowIndex) {
+			// ...add an extra row & move to next row...
 			newGridData.rows.push({ height: 1, columns: []});
+			i++;
 		}
 	}
 	//...set gridDataStore to newGridData
@@ -43,9 +46,11 @@ export function decreaseRowHeight(rowIndex) {
 	for (let i = 0; i < gridData.rows.length; i++) {
 		const row = gridData.rows[i];
 		//...if current row isn't the blank row add row to newGridData...
-		if (i !== rowIndex + 1) {
-			newGridData.rows.push(row); 
+		//TODO: add condition for last row ? maby skip row instead?
+		if (i === rowIndex + 1 ) {
+			row.columns.push({ width: 1}, { width: 1}, { width: 1});
 		}
+		newGridData.rows.push(row);
 	}
 	//...set gridDataStore to newGridData
 	gridDataStore.set(newGridData);
