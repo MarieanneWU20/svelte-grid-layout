@@ -55,20 +55,23 @@ export function decreaseRowHeight(rowIndex) {
 export function increaseColmnWidth(columnIndex) {
 	let gridData = get(gridDataStore);
 	let newGridData = { rows: []};
-//TODO: Increaese column width
-	//Insert blank column: 
+// Increaese column width and insert blank column:
+	//...for every row in gridData...
 	for (let i = 0; i < gridData.rows.length; i++) {
 		const row = gridData.rows[i];
+		//...for every column in row...
 		for (let j = 0; j < row.columns.length; j++) {
 			const column = row.columns[j];
-			
+			//...if current column should increase: increase width and add an extra column
 			if (j === columnIndex ) {
+	
 				column.width++;
 				row.columns.push({ width: 1})
 			}
 		}
 		newGridData.rows.push(row); 
 	}
+	//...set gridDataStore to newGridData
 	gridDataStore.set(newGridData);
 	console.log('Increaese width on column nr:', get(gridDataStore));
 }
@@ -76,8 +79,22 @@ export function increaseColmnWidth(columnIndex) {
 export function decreaseColmnWidth(columnIndex) {
 	let gridData = get(gridDataStore);
 	let newGridData = { rows: []};
-//TODO: Decreaese column width
-	//Remove blank column: 
+//Decreaese column width and remove blank column: 
+	//...for every row in gridData...
+	for (let i = 0; i < gridData.rows.length; i++) {
+		const row = gridData.rows[i];
+		//...for every column in row...
+		for (let j = 0; j < row.columns.length; j++) {
+			const column = row.columns[j];
+			//...if current column should decrease: decrease width and remove a column
+			if (j === columnIndex) {
+				column.width--;
+				row.columns.pop(); 
+			}
+		}
+		newGridData.rows.push(row); 
+	}
+	gridDataStore.set(newGridData);
 	console.log('Decreaese width on column nr:',columnIndex);
 }
 
