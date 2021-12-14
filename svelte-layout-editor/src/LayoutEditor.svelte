@@ -1,7 +1,7 @@
 <script>
 	import ArrowButton from "./components/ArrowButton.svelte";
 	import { gridDataStore, calculateRows, calculateColumns } from "./store/gridDataStore";
-
+	export let content;
 	//TODO: Try to sent content via props
 </script>
   
@@ -27,7 +27,8 @@
 				  <ArrowButton placing="inner" index={rowIndex} id="up" />
 				{/if}
 			  </div>
-			  <slot ></slot>
+				  {content[rowIndex][columnIndex]}
+			  <!-- <slot ></slot> -->
 			  <div class="left-arrow"> 
 				<!-- {#if column.width > 1} -->
 				  <ArrowButton placing="inner" index={columnIndex} id="left" />
