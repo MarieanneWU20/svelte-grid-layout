@@ -1,6 +1,6 @@
 
 <script>
-    import {LayoutEditor, LayoutItem } from "svelte-layout-editor";
+    import {Grid, Row, Column } from "svelte-layout-editor";
 </script>
 
 <h1>Cool App</h1>
@@ -11,13 +11,19 @@
         ["https://gillas.nu/wp-content/uploads/2016/06/roliga-bilder-om-datorn-tar-en-bild-efter-tre-felaktiga-inloggningsforsok-01.jpg"]
         ]} />
     <LayoutEditor  /> -->
-    <LayoutEditor/>
-    <!--<Grid>
+    <!-- <LayoutEditor/> -->
+    <Grid>
         <Row>
-            <Column><p>Test1</p></Column>
-            <Column><p>Test2</p></Column>
+            <Column><p>Test 1 från App</p></Column>
+            <Column><p>Test 2 från App</p></Column>
+            <Column><p>Test 3 från App</p></Column>
         </Row>
-    </Grid>-->
+        <Row>
+            <Column><p>Test 4 från App</p></Column>
+            <Column><p>Test 5 från App</p></Column>
+            <Column><p>Test 6 från App</p></Column>
+        </Row>
+    </Grid>
 </main>
 
 <style>

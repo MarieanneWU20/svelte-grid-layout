@@ -1,6 +1,8 @@
 
-import LayoutEditorComponent from "./src/LayoutEditor.svelte";
-import LayoutItemComponent from "./src/LayoutItem.svelte";
+import LayoutEditor from "./src/LayoutEditor.svelte";
+import RowComponent from "./src/components/Row.svelte";
+import ColumnComponent from "./src/components/Column.svelte";
 
-export const LayoutEditor = LayoutEditorComponent;
-export const LayoutItem = LayoutItemComponent;
+export const Grid = LayoutEditor;
+export const Row = RowComponent;
+export const Column = ColumnComponent;

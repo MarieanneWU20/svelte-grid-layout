@@ -6,7 +6,7 @@
 	import { gridDataStore, calculateRows, calculateColumns } from "./store/gridDataStore";
 
 	// export let pics
-	 // matrix of urls to pictures [[pic1, pic3], [pic2, pic4]];
+	// matrix of urls to pictures [[pic1, pic3], [pic2, pic4]];
 
 	onMount(() => {
 		$gridDataStore = { rows: [{ columns: [{}, {}] }] };
@@ -25,60 +25,40 @@
 			<ArrowButton index=N/A placing="outer" id="left"/>
 		 <!-- {/if} -->
 	  </div>
+	  
 	  <div class="container">
+		<slot >
 		 {#each $gridDataStore.rows as row, rowIndex} 
-		 <Row>
-			{#each row.columns as column, columnIndex}
-			<div id={column.id} class="section" style="grid-area: { `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}` } ;">
-				<Column>
-					<div class="up-arrow">
-						{#if row.height > 1 && columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
-						  <ArrowButton placing="inner" index={rowIndex} id="up" />
-						{/if}
-					 </div>
-					 <div class="left-arrow">
-						{#if column.width > 1}
-						  <ArrowButton placing="inner" index={columnIndex} id="left" />
-						{/if}
-					 </div>
-					 <div class="right-arrow">
-						<ArrowButton placing="inner" index={columnIndex} id="right" />
-					 </div>
-					 <div class="down-arrow">
-						{#if columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
-						  <ArrowButton placing="inner" index={rowIndex}  id="down" />
-						{/if}
-					 </div>
-				</Column>
-			</div>
-			
-			  <!-- <div id={column.id} class="section" style="grid-area: { `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}` } ;">
-				 <div class="up-arrow">
-					{#if row.height > 1 && columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
-					  <ArrowButton placing="inner" index={rowIndex} id="up" />
-					{/if}
-				 </div>
-				 {#if (rowIndex < pics.length && columnIndex < pics[rowIndex].length)}
-				 	<img src={pics[rowIndex][columnIndex]} alt="bild" />
-				 {/if}
-				 <div class="left-arrow">
-					{#if column.width > 1}
-					  <ArrowButton placing="inner" index={columnIndex} id="left" />
-					{/if}
-				 </div>
-				 <div class="right-arrow">
-					<ArrowButton placing="inner" index={columnIndex} id="right" />
-				 </div>
-				 <div class="down-arrow">
-					{#if columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
-					  <ArrowButton placing="inner" index={rowIndex}  id="down" />
-					{/if}
-				 </div>
-			  </div> -->
-			{/each}
-			</Row>
-		 {/each}
+		 	
+				{#each row.columns as column, columnIndex}
+					
+						<div id={column.id} class="section" style="grid-area: { `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}` } ;">
+					
+							<div class="up-arrow">
+									{#if row.height > 1 && columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
+									<ArrowButton placing="inner" index={rowIndex} id="up" />
+									{/if}
+								</div>
+								<!-- <slot></slot> -->
+								<div class="left-arrow">
+									{#if column.width > 1}
+									<ArrowButton placing="inner" index={columnIndex} id="left" />
+									{/if}
+								</div>
+								<div class="right-arrow">
+									<ArrowButton placing="inner" index={columnIndex} id="right" />
+								</div>
+								<div class="down-arrow">
+									{#if columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
+									<ArrowButton placing="inner" index={rowIndex}  id="down" />
+									{/if}
+								</div>
+						</div>
+				{/each}
+		 	{/each}
+		</slot>
 	  </div>
+		
 	  <div class="right-arrow">
 		 {#if calculateRows() < 5}
 			<ArrowButton index=N/A placing="outer" id="right"/>
