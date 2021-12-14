@@ -1,26 +1,20 @@
 <script>
+	import { gridDataStore } from "../store/gridDataStore";
+
 	export let height;
-	console.log('Row height: ',height);
+	console.log('Row: height: ',height);
 </script>
 
-<!-- <div class="container"> -->
-    <h1>ROW</h1>
-    <slot/> 
-<!-- </div> -->
-    
+<slot><h1>ROW</h1></slot>
 
+	{#each $gridDataStore.rows as row, rowIndex} 
+		{#each row.columns as column, columnIndex}
+			<div id={column.id} class="section" style="grid-area: { `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}` } ;"></div>
+	{/each}
+{/each}
+    
 <style>
     h1 {
         color: darkred;
     }
-    /* .container {
-	  padding: 10px;
-	  background-color: #edf1f7;
-	  border: 1px solid #3d5f99;
-	  min-height: 50vh;
-	  display: grid;
-	  grid-auto-columns: 1fr 1fr;
-	  grid-auto-rows: 1fr 1fr;
-	  gap: 0.6rem 0.6rem;
-	} */
 </style>
