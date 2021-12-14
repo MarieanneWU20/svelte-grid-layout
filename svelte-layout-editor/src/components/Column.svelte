@@ -1,10 +1,10 @@
 <script>
-    // export let gridArea;
+    
 </script>
-<!-- style="grid-area: { gridArea } ;" -->
-<div class="section"  >
+
+<div class="section">
     <h1>COLUMN</h1>
-    <slot ></slot>
+    <slot/>
 </div>
 
 <style>

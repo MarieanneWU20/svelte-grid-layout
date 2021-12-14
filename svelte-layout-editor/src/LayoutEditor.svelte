@@ -1,16 +1,11 @@
 <script>
-	import { onMount } from "svelte";
+	// import { onMount } from "svelte";
 	import ArrowButton from "./components/ArrowButton.svelte";
-	import Row from "./components/Row.svelte";
-	import Column from "./components/Column.svelte";
 	import { gridDataStore, calculateRows, calculateColumns } from "./store/gridDataStore";
 
-	// export let pics
-	// matrix of urls to pictures [[pic1, pic3], [pic2, pic4]];
-
-	onMount(() => {
-		$gridDataStore = { rows: [{ columns: [{}, {}] }] };
-	});
+	// onMount(() => {
+	// 	$gridDataStore = { rows: [{ columns: [{}, {}] }] };
+	// });
  </script>
 
  <div class="editor">
@@ -39,7 +34,6 @@
 									<ArrowButton placing="inner" index={rowIndex} id="up" />
 									{/if}
 								</div>
-								<!-- <slot gridArea={`${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}`}></slot> -->
 								<div class="left-arrow">
 									{#if column.width > 1}
 									<ArrowButton placing="inner" index={columnIndex} id="left" />

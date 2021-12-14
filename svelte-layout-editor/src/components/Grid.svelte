@@ -1,19 +1,19 @@
-<script>
+<!-- <script>
   import ArrowButton from "./ArrowButton.svelte";
   import { gridDataStore, calculateRows, calculateColumns } from "../store/gridDataStore";
-</script>
+</script> -->
 
-<div class="editor">
+<!-- <div class="editor">
   <div class="up-arrow">
-    <!-- {#if calculateRows() > 3} -->
+    {#if calculateRows() > 3}
       <ArrowButton index=N/A placing="outer" id="up"/> 
-    <!-- {/if} -->
+    {/if}
   </div>
   <div class="row">
     <div class="left-arrow">
-      <!-- {#if calculateColumns() > 3} -->
+      {#if calculateColumns() > 3}
         <ArrowButton index=N/A placing="outer" id="left"/>
-      <!-- {/if} -->
+      {/if}
     </div>
     <div class="container">
       {#each $gridDataStore.rows as row, rowIndex}
@@ -28,9 +28,9 @@
             <slot name="1"/>
             <p>Test</p>
             <div class="left-arrow"> 
-              <!-- {#if column.width > 1} -->
+              {#if column.width > 1}
                 <ArrowButton placing="inner" index={columnIndex} id="left" />
-              <!-- {/if} -->
+              {/if}
             </div>
             <div class="right-arrow">
               <ArrowButton placing="inner" index={columnIndex} id="right" />
@@ -55,9 +55,9 @@
   	  <ArrowButton index=N/A placing="outer" id="down"/>
 	  {/if}
   </div>
-</div>
+</div> -->
 
-<style>
+<!-- <style>
   .editor {
     width: 100%;
     height: auto;
@@ -162,4 +162,4 @@
       top: 40%;
   }
 }
-</style>
+</style> -->

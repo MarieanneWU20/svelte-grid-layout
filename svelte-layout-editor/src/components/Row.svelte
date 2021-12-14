@@ -1,19 +1,17 @@
 <script>
 </script>
 
-<div class="container">
+<!-- <div class="container"> -->
     <h1>ROW</h1>
-    <slot>
-        <!-- <slot name="column"/> -->
-    </slot> 
-</div>
+    <slot/> 
+<!-- </div> -->
     
 
 <style>
     h1 {
         color: darkred;
     }
-    .container {
+    /* .container {
 	  padding: 10px;
 	  background-color: #edf1f7;
 	  border: 1px solid #3d5f99;
@@ -22,6 +20,5 @@
 	  grid-auto-columns: 1fr 1fr;
 	  grid-auto-rows: 1fr 1fr;
 	  gap: 0.6rem 0.6rem;
-	}
-	 
+	} */
 </style>
