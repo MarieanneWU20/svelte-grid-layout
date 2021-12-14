@@ -1,4 +1,6 @@
 <script>
+	export let height;
+	console.log('Row height: ',height);
 </script>
 
 <!-- <div class="container"> -->

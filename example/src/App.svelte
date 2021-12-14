@@ -5,15 +5,15 @@
 
 <main>
     <Grid>
-        <Row>
-            <Column><p>Test 1 från App</p></Column>
-            <Column><p>Test 2 från App</p></Column>
-            <Column><p>Test 3 från App</p></Column>
+        <Row height=1>
+            <Column width=1><p>Test 1 från App</p></Column>
+            <Column width=1><p>Test 2 från App</p></Column>
+            <Column width=2><p>Test 3 från App</p></Column>
         </Row>
-        <Row>
-            <Column><p>Test 4 från App</p></Column>
-            <Column><p>Test 5 från App</p></Column>
-            <Column><p>Test 6 från App</p></Column>
+        <Row height=2>
+            <Column width=2><p>Test 4 från App</p></Column>
+            <Column width=1><p>Test 5 från App</p></Column>
+            <Column width=1><p>Test 6 från App</p></Column>
         </Row>
     </Grid>
 </main>

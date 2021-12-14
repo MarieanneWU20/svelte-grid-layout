@@ -1,5 +1,6 @@
 <script>
-    
+    export let width;
+	console.log('Column width: ', width);
 </script>
 
 <div class="section">
