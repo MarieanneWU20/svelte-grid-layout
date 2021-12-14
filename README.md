@@ -2,15 +2,14 @@
 
 ![npm](https://img.shields.io/npm/v/svelte-layout-editor?style=plastic) ![GitHub](https://img.shields.io/github/license/wiviwonderwoman/svelte-layout-editor?style=plastic) ![npm](https://img.shields.io/npm/dw/svelte-layout-editor?style=plastic) 
 ## Description 
-**Svelte layout editor** is a tool that gives the user a graphical interface (to work with) to create a page template for Svelte applications. 
+**Svelte Layout Editor** is a tool that gives the user a graphical interface to create a page template for applications built with Svelte. 
 
-A page template specifies the layout of the page with a set of rules that determine how components should be laid out on a page. 
+The page templates specify the layout of the page through a set of predetermined rules of how the components of the page should be laid out.  
 
 ### Why?
-All the nitty gritty details such as resposive sizing and styling is already been taken care of by **Svelte layout editor** and will be ✨ automagically ✨ generated with just a few clicks.
+All the nitty gritty details, such as responsive sizing and styling, has already been taken care of by **Svelte Layout Editor**, and will be ✨ automagically ✨ generated with just a few clicks.
 
-Therefore, you can focus entirely on the content part of your app. 
-Once you have a layout that you prefer it's easy to reuse the same it on multiple pages.
+Therefore, you can focus entirely on the content part of your app, without having to worry about the layout. Once you have the layout that you want, it's easy to reuse and apply the same one to multiple pages. 
 
 ## Installation
 ```bash
