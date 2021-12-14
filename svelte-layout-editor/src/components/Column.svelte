@@ -1,10 +1,8 @@
 <script>
-    import ArrowButton from "./ArrowButton.svelte";
-    // export let rowIndex;
-    // export let columnIndex;
+    // export let gridArea;
 </script>
-
-<div class="section">
+<!-- style="grid-area: { gridArea } ;" -->
+<div class="section"  >
     <h1>COLUMN</h1>
     <slot ></slot>
 </div>

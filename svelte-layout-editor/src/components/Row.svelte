@@ -1,11 +1,11 @@
 <script>
-    
-    
 </script>
 
 <div class="container">
     <h1>ROW</h1>
-    <slot/>
+    <slot>
+        <!-- <slot name="column"/> -->
+    </slot> 
 </div>
     
 

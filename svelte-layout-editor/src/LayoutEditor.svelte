@@ -33,13 +33,13 @@
 				{#each row.columns as column, columnIndex}
 					
 						<div id={column.id} class="section" style="grid-area: { `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}` } ;">
-					
+							
 							<div class="up-arrow">
 									{#if row.height > 1 && columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
 									<ArrowButton placing="inner" index={rowIndex} id="up" />
 									{/if}
 								</div>
-								<!-- <slot></slot> -->
+								<!-- <slot gridArea={`${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}`}></slot> -->
 								<div class="left-arrow">
 									{#if column.width > 1}
 									<ArrowButton placing="inner" index={columnIndex} id="left" />
