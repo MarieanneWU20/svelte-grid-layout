@@ -1,3 +1,4 @@
+<!-- TODO: DELETE ??? -->
 <!-- <script>
   import ArrowButton from "./ArrowButton.svelte";
   import { gridDataStore, calculateRows, calculateColumns } from "../store/gridDataStore";

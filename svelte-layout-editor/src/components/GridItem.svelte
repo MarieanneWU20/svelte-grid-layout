@@ -1,4 +1,4 @@
-<!-- TODO: REMOVE ??? -->
+<!-- TODO: DELETE ??? -->
 <!-- <script>
 	import { onMount } from "svelte";
 	import ArrowButton from "./ArrowButton.svelte";

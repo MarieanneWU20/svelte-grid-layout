@@ -1,11 +1,11 @@
 <script>
-	// import { onMount } from "svelte";
+	import { onMount } from "svelte";
 	import ArrowButton from "./components/ArrowButton.svelte";
 	import { gridDataStore, calculateRows, calculateColumns } from "./store/gridDataStore";
 
-	// onMount(() => {
-	// 	$gridDataStore = { rows: [{ columns: [{}, {}] }] };
-	// });
+	onMount(() => {
+		$gridDataStore = { rows: [{ columns: [{}, {}] }] };
+	});
  </script>
 
  <div class="editor">
@@ -15,53 +15,23 @@
 	  <!-- {/if} -->
 	</div>
 	<div class="row">
-	  <div class="left-arrow">
+	  	<div class="left-arrow">
 		 <!-- {#if calculateColumns() > 3} -->
 			<ArrowButton index=N/A placing="outer" id="left"/>
 		 <!-- {/if} -->
-	  </div>
-	  
-	  <div class="container">
-		<slot >
-		 {#each $gridDataStore.rows as row, rowIndex} 
-		 	
-				{#each row.columns as column, columnIndex}
-					
-						<div id={column.id} class="section" style="grid-area: { `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}` } ;">
-							
-							<div class="up-arrow">
-									{#if row.height > 1 && columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
-									<ArrowButton placing="inner" index={rowIndex} id="up" />
-									{/if}
-								</div>
-								<div class="left-arrow">
-									{#if column.width > 1}
-									<ArrowButton placing="inner" index={columnIndex} id="left" />
-									{/if}
-								</div>
-								<div class="right-arrow">
-									<ArrowButton placing="inner" index={columnIndex} id="right" />
-								</div>
-								<div class="down-arrow">
-									{#if columnIndex !== 0 && columnIndex + 1 !== calculateColumns()}
-									<ArrowButton placing="inner" index={rowIndex}  id="down" />
-									{/if}
-								</div>
-						</div>
-				{/each}
-		 	{/each}
-		</slot>
-	  </div>
-		
-	  <div class="right-arrow">
-		 {#if calculateRows() < 5}
-			<ArrowButton index=N/A placing="outer" id="right"/>
-		 {/if}
-	  </div>
+	  	</div>
+	  	<div class="container">
+			<slot ></slot>
+	  	</div>
+	  	<div class="right-arrow">
+		 	{#if calculateRows() < 5}
+				<ArrowButton index=N/A placing="outer" id="right"/>
+		 	{/if}
+	  	</div>
 	</div>
-	 <div class="down-arrow">
-	  {#if calculateColumns() < 5}
-		  <ArrowButton index=N/A placing="outer" id="down"/>
+	<div class="down-arrow">
+	  	{#if calculateColumns() < 5}
+		  	<ArrowButton index=N/A placing="outer" id="down"/>
 		{/if}
 	</div>
  </div>
@@ -72,7 +42,7 @@
 	  height: auto;
 	}
 	.editor>.up-arrow {
-		 display: flex;
+		display: flex;
 		 justify-content: center;
 		 align-items: center;
 		 margin: 30px 0 10px 0;
@@ -106,46 +76,14 @@
 		 justify-content: center;
 		 align-items: center;
 		 margin: 10px 0 30px 0;
-	 }
-	.section {
-		 width: auto;
-		 height: auto;
-		 border-radius: 20px;
-		 background-color: #ffffff;
-		 text-align: center;
-		 vertical-align: middle;
-	 }
-	 .section>.up-arrow {
-		 justify-content: center;
-		 height: 25px;
-	 }
-	 .section>.left-arrow {
-		 float: left;
-		 width: 25px;
-		 height: 25px;
-	 }
-	 .section>.right-arrow {
-		 float: right;
-		 width: 25px;
-		 height: 45px;
-	 }
-	 .section>.down-arrow {
-		 justify-content: center;
-		 height: 25px;
-		 margin-top: 20%;
-	 }
-
+	}
 	@media screen and (min-width: 480px) {
 	  .container {
 		 padding: 15px;
 		 gap: 0.8rem 0.8rem;
 		 min-height: 75vh;
-	  }
-	  .section{
-		 border-radius: 25px;
-		 padding: 15px;
-	 }
-	.container .left-arrow,
+	}
+	.left-arrow,
 	  .right-arrow {
 		 top: 35%;
 	  }
@@ -155,18 +93,14 @@
 		 padding: 18px;
 		 gap: 1rem 1rem;
 		 min-height: 100vh;
-	  }
-	  .section{
-		 border-radius: 30px;
-		 padding: 20px;
-		 }
-	  .container .left-arrow,
+	}
+	  .left-arrow,
 	  .right-arrow {
 		 top: 37%;
 	  }
 	}
 	@media screen and (min-width: 1024px) {
-	  .container .left-arrow,
+	  .left-arrow,
 	  .right-arrow {
 		 top: 40%;
 	}
