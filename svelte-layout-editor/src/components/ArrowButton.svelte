@@ -4,7 +4,7 @@
     import Arrow from "./Arrow.svelte";
 
     export let placing;
-    export let index;
+    // export let index;
     export let id;
 
     onMount(function () {

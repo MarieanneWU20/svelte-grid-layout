@@ -1,10 +1,14 @@
 <script>
 	import ArrowButton from "./ArrowButton.svelte";
     export let width;
-	console.log('Column width: ', width);
+	export let height;
+	export let rowIndex;
+	export let columnIndex;
+	console.log('startRow: ',Number(rowIndex) + 1 ,' startColumn: ',Number(columnIndex) + 1, ' endRow: ', Number(rowIndex)+1+Number(height), ' endColumn: ', Number(columnIndex)+1+Number(width) );
+
 </script>
 
-<div class="section">
+<div class="section" style="grid-area: { `${Number(rowIndex) + 1}/${Number(columnIndex) + 1}/${Number(rowIndex)+1+Number(height)}/${Number(columnIndex)+1+Number(width)}` } ;">
 	<div class="up-arrow">
 		<!-- index={rowIndex} -->
 		<ArrowButton placing="inner"  id="up" />
