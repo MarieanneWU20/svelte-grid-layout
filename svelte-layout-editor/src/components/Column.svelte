@@ -1,33 +1,56 @@
 <script>
+	import { gridDataStore } from "../store/gridDataStore";
 	import ArrowButton from "./ArrowButton.svelte";
+	
     export let width;
-	console.log('Column width: ', width);
+	export let height;
+	
+	console.log('Column width: ', width, 'height: ',height);
 </script>
 
-<div class="section">
+<!-- <slot><h1>COLUMN</h1></slot> -->
+{#each $gridDataStore.rows as row, rowIndex} 
+
+	{#each row.columns as column, columnIndex}
+
+		<div id={column.id} class="section" style="grid-area: { `${Number(rowIndex) + 1}/${Number(columnIndex) + 1}/${Number(rowIndex)+1+Number(height)}/${Number(columnIndex)+1+Number(width)}` } ;">
+			<div class="up-arrow">
+				<ArrowButton index={rowIndex} placing="inner"  id="up" />
+			</div>
+			<slot><h1>EMPTY COLUMN!!</h1></slot>
+			<div class="left-arrow">
+				<ArrowButton index={columnIndex} placing="inner" id="left" />
+			</div>
+			<div class="right-arrow">
+				<ArrowButton index={columnIndex} placing="inner" id="right" />
+			</div>
+			<div class="down-arrow">
+				<ArrowButton index={rowIndex} placing="inner" id="down" />
+			</div>
+		</div>
+	{/each}
+{/each}
+
+<!-- <div class="section">
 	<div class="up-arrow">
-		<!-- index={rowIndex} -->
-		<ArrowButton placing="inner"  id="up" />
+		<ArrowButton index={rowIndex} placing="inner"  id="up" />
 	</div>
 	<slot><h1>COLUMN</h1></slot>
 	<div class="left-arrow">
-		<!-- index={columnIndex}  -->
-		<ArrowButton placing="inner" id="left" />
+		<ArrowButton index={columnIndex} placing="inner" id="left" />
 	</div>
 	<div class="right-arrow">
-		<!-- index={columnIndex}  -->
-		<ArrowButton placing="inner" id="right" />
+		<ArrowButton index={columnIndex} placing="inner" id="right" />
 	</div>
 	<div class="down-arrow">
-		<!-- index={rowIndex} -->
-		<ArrowButton placing="inner" id="down" />
+		<ArrowButton index={rowIndex} placing="inner" id="down" />
 	</div>
-</div>
+</div> -->
 
 
 <style>
     h1 {
-        color: darkred;
+        color: darkgreen;
     }
     .section {
 		 width: auto;
@@ -36,6 +59,7 @@
 		 background-color: #ffffff;
 		 text-align: center;
 		 vertical-align: middle;
+		 border: darkred solid 2px;
 	}
 	.section {
 		 width: auto;
