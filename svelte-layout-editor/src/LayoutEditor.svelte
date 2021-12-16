@@ -3,9 +3,9 @@
 	import ArrowButton from "./components/ArrowButton.svelte";
 	import { gridDataStore, calculateRows, calculateColumns } from "./store/gridDataStore";
 
-	// onMount(() => {
-	// 	$gridDataStore = { rows: [{ columns: [{}, {}] }] };
-	// });
+	onMount(() => {
+		$gridDataStore = { rows: [{ columns: [{}, {}] }] };
+	});
  </script>
 
  <div class="editor">
