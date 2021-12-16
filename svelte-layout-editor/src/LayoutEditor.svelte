@@ -1,11 +1,16 @@
 <script>
-	import { onMount } from "svelte";
+	import { onMount, setContext } from "svelte";
 	import ArrowButton from "./components/ArrowButton.svelte";
 	import { gridDataStore, calculateRows, calculateColumns } from "./store/gridDataStore";
 
 	// onMount(() => {
 	// 	$gridDataStore = { rows: [{ columns: [{}, {}] }] };
 	// });
+	setContext("grid", {
+		rowIndex: -1,
+		columnIndex: 0,
+		blocks: [] 
+	});
  </script>
 
  <div class="editor">

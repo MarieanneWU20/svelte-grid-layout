@@ -1,28 +1,78 @@
 <script>
+	import { getContext } from 'svelte';
+	
 	import ArrowButton from "./ArrowButton.svelte";
-    export let width;
+	export let width;
 	export let height;
-	export let rowIndex;
-	export let columnIndex;
-	console.log('startRow: ',Number(rowIndex) + 1 ,' startColumn: ',Number(columnIndex) + 1, ' endRow: ', Number(rowIndex)+1+Number(height), ' endColumn: ', Number(columnIndex)+1+Number(width) );
+
+	const grid = getContext("grid");
+
+	const checkX = (startColumnIndex, rowIndex, width) => {
+		let run = true;
+		while (run) {
+			let endColumnIndex = startColumnIndex + width;
+			console.log("tre");
+			run = false;
+			checkBlock: for(let block of grid.blocks) {
+				console.log("here");
+				if (block.rowIndex == rowIndex) {
+					console.log("there is a block on this row");
+					
+					if (endColumnIndex > block.startColumnIndex && startColumnIndex <= block.endColumnIndex ) {
+						console.log("there is a block on this row and column");
+						startColumnIndex++;
+						run = true;
+					}
+				}
+			}
+		}
+		return startColumnIndex;
+	}
+
+	export let name;
+	let w = Number(width);
+	let h = Number(height);
+	let y = Number(grid.rowIndex);
+	let x = checkX(Number(grid.columnIndex), y, w);
+	const end = x+w;
+
+	
+	// while (grid.blocks.includes(block => block.rowIndex == y && block.startColumnIndex == x)) {
+	// }
+
+	grid.columnIndex = grid.columnIndex = end;
+
+	if (h > 1) {
+		for(let nextRow=1; nextRow<h; nextRow++) {
+			const block = { 
+				rowIndex: y+nextRow,
+				startColumnIndex: x,
+				endColumnIndex: x+w-1
+			 }
+			 grid.blocks.push(block);
+		}
+	}
+	console.log(name || "col",x,y,w,h,"\tblocks", grid.blocks);
+
+	//console.log('startRow: ',Number(y) + 1 ,' startColumn: ',Number(x) + 1, ' endRow: ', Number(y)+1+Number(height), ' endColumn: ', Number(x)+1+Number(width) );
 
 </script>
 
-<div class="section" style="grid-area: { `${Number(rowIndex) + 1}/${Number(columnIndex) + 1}/${Number(rowIndex)+1+Number(height)}/${Number(columnIndex)+1+Number(width)}` } ;">
+<div class="section" style="grid-area: { `${Number(y) + 1}/${Number(x) + 1}/${Number(y)+1+Number(height)}/${Number(x)+1+Number(width)}` } ;">
 	<slot>
 	<div class="up-arrow">
-		<ArrowButton index={rowIndex} placing="inner"  id="up" />
+		<ArrowButton index={y} placing="inner"  id="up" />
 	</div>
-	<h1>COLUMN</h1>
+	<p>COLUMN</p>
 	<p>instruktioner</p>
 	<div class="left-arrow">
-		<ArrowButton index={columnIndex} placing="inner" id="left" />
+		<ArrowButton index={x} placing="inner" id="left" />
 	</div>
 	<div class="right-arrow">
-		<ArrowButton index={columnIndex} placing="inner" id="right" />
+		<ArrowButton index={x} placing="inner" id="right" />
 	</div>
 	<div class="down-arrow">
-		<ArrowButton index={rowIndex} placing="inner" id="down" />
+		<ArrowButton index={y} placing="inner" id="down" />
 	</div>
 	</slot>
 </div>

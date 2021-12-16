@@ -1,5 +1,15 @@
 <script>
+	import { getContext, setContext } from 'svelte';
 	import { gridDataStore } from "../store/gridDataStore";
+	export let name;
+	const grid = getContext("grid");
+	grid.rowIndex = grid.rowIndex+1;
+	grid.columnIndex = 0;
+	// setContext("grid", {
+	// 	...grid,
+	// 	rowIndex: grid.rowIndex+1
+	// });
+	console.log(name, grid);
 
 	// export let height;
 	// console.log('Row: height: ',height);
