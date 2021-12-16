@@ -1,6 +1,6 @@
 # Demo example
 ## Get started
-Install the dependencies...
+Install dependencies...
 ```bash
 cd svelte-layour-editor-example
 npm ci
