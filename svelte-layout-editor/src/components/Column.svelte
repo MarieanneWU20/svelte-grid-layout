@@ -4,16 +4,16 @@
 	
     export let width;
 	export let height;
+	export let rowIndex;
+	export let columnIndex;
 	
 	console.log('Column width: ', width, 'height: ',height);
 </script>
 
-<!-- <slot><h1>COLUMN</h1></slot> -->
-{#each $gridDataStore.rows as row, rowIndex} 
-
-	{#each row.columns as column, columnIndex}
-
-		<div id={column.id} class="section" style="grid-area: { `${Number(rowIndex) + 1}/${Number(columnIndex) + 1}/${Number(rowIndex)+1+Number(height)}/${Number(columnIndex)+1+Number(width)}` } ;">
+<!-- {#each $gridDataStore.rows as row, rowIndex}  -->
+	<!-- {#each $gridDataStore.rows[rowIndex].columns as column, columnIndex} -->
+		<!-- id={column.id} -->
+		<div  class="section" style="grid-area: { `${Number(rowIndex) + 1}/${Number(columnIndex) + 1}/${Number(rowIndex)+1+Number(height)}/${Number(columnIndex)+1+Number(width)}` } ;">
 			<div class="up-arrow">
 				<ArrowButton index={rowIndex} placing="inner"  id="up" />
 			</div>
@@ -28,25 +28,8 @@
 				<ArrowButton index={rowIndex} placing="inner" id="down" />
 			</div>
 		</div>
-	{/each}
-{/each}
-
-<!-- <div class="section">
-	<div class="up-arrow">
-		<ArrowButton index={rowIndex} placing="inner"  id="up" />
-	</div>
-	<slot><h1>COLUMN</h1></slot>
-	<div class="left-arrow">
-		<ArrowButton index={columnIndex} placing="inner" id="left" />
-	</div>
-	<div class="right-arrow">
-		<ArrowButton index={columnIndex} placing="inner" id="right" />
-	</div>
-	<div class="down-arrow">
-		<ArrowButton index={rowIndex} placing="inner" id="down" />
-	</div>
-</div> -->
-
+	<!-- {/each} -->
+<!-- {/each} -->
 
 <style>
     h1 {

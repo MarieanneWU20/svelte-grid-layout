@@ -21,7 +21,10 @@
 		 <!-- {/if} -->
 	  	</div>
 	  	<div class="container">
+			<!-- {#each $gridDataStore.rows as row, rowIndex} -->
 			<slot ></slot>
+			<!-- {rowIndex}
+			{/each} -->
 	  	</div>
 	  	<div class="right-arrow">
 		 	{#if calculateRows() < 5}
