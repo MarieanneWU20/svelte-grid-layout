@@ -1,6 +1,5 @@
 <script>
     import { onMount } from "svelte";
-    import { decreaseColmnWidth, decreaseRowHeight, increaseColmnWidth, increaseRowHeight } from "../store/gridDataStore";
     import Arrow from "./Arrow.svelte";
 
     export let placing;

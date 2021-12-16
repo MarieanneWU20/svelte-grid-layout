@@ -1,20 +1,17 @@
 <script>
-	import { gridDataStore } from "../store/gridDataStore";
+	import { getContext } from 'svelte';
+	
+	const grid = getContext("grid");
 
-	export let height;
-	console.log('Row: height: ',height);
+	grid.rowIndex = grid.rowIndex+1;
+	grid.columnIndex = 0;
+
 </script>
 
-<slot><h1>ROW</h1></slot>
-
-	{#each $gridDataStore.rows as row, rowIndex} 
-		{#each row.columns as column, columnIndex}
-			<div id={column.id} class="section" style="grid-area: { `${rowIndex + 1}/${columnIndex + 1}/${rowIndex+1+row.height}/${columnIndex+1+column.width}` } ;"></div>
-	{/each}
-{/each}
+<slot><p>Row without columns</p></slot>
     
 <style>
-    h1 {
+    p {
         color: darkred;
     }
 </style>

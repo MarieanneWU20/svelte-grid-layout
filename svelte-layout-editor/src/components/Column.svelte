@@ -1,32 +1,71 @@
 <script>
+	import { getContext } from 'svelte';
 	import ArrowButton from "./ArrowButton.svelte";
-    export let width;
-	console.log('Column width: ', width);
+
+	export let width;
+	export let height;
+
+	const grid = getContext("grid");
+
+	const checkX = (startColumnIndex, rowIndex, width) => {
+		let run = true;
+		while (run) {
+			let endColumnIndex = startColumnIndex + width;
+			run = false;
+			for(let block of grid.blocks) {
+				if (block.rowIndex == rowIndex) {
+					if (endColumnIndex > block.startColumnIndex && startColumnIndex <= block.endColumnIndex ) {
+						startColumnIndex++;
+						run = true;
+					};
+				};
+			};
+		};
+		return startColumnIndex;
+	};
+
+	let w = Number(width);
+	let h = Number(height);
+	let y = Number(grid.rowIndex);
+	let x = checkX(Number(grid.columnIndex), y, w);
+	const end = x+w;
+
+	grid.columnIndex = grid.columnIndex = end;
+
+	if (h > 1) {
+		for(let nextRow=1; nextRow<h; nextRow++) {
+			const block = { 
+				rowIndex: y+nextRow,
+				startColumnIndex: x,
+				endColumnIndex: x+w-1
+			 }
+			 grid.blocks.push(block);
+		}
+	}
+	console.log("col",x,y,w,h,"\tblocks", grid.blocks);
+
 </script>
 
-<div class="section">
+<div class="section" style="grid-area: { `${Number(y) + 1}/${Number(x) + 1}/${Number(y)+1+Number(h)}/${Number(x)+1+Number(w)}` } ;">
+	<slot>
 	<div class="up-arrow">
-		<!-- index={rowIndex} -->
-		<ArrowButton placing="inner"  id="up" />
+		<ArrowButton index={y} placing="inner"  id="up" />
 	</div>
-	<slot><h1>COLUMN</h1></slot>
+	<p>Column without content</p>
 	<div class="left-arrow">
-		<!-- index={columnIndex}  -->
-		<ArrowButton placing="inner" id="left" />
+		<ArrowButton index={x} placing="inner" id="left" />
 	</div>
 	<div class="right-arrow">
-		<!-- index={columnIndex}  -->
-		<ArrowButton placing="inner" id="right" />
+		<ArrowButton index={x} placing="inner" id="right" />
 	</div>
 	<div class="down-arrow">
-		<!-- index={rowIndex} -->
-		<ArrowButton placing="inner" id="down" />
+		<ArrowButton index={y} placing="inner" id="down" />
 	</div>
+	</slot>
 </div>
 
-
 <style>
-    h1 {
+	p {
         color: darkred;
     }
     .section {
