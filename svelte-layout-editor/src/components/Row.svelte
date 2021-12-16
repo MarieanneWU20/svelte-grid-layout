@@ -1,21 +1,17 @@
 <script>
-	import { getContext, setContext } from 'svelte';
-	export let name;
+	import { getContext } from 'svelte';
+	
 	const grid = getContext("grid");
+
 	grid.rowIndex = grid.rowIndex+1;
 	grid.columnIndex = 0;
-	// setContext("grid", {
-	// 	...grid,
-	// 	rowIndex: grid.rowIndex+1
-	// });
-	console.log(name, grid);
 
 </script>
 
-<slot><h1>ROW</h1></slot>
+<slot><p>Row without columns</p></slot>
     
 <style>
-    h1 {
+    p {
         color: darkred;
     }
 </style>

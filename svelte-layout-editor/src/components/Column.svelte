@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
-	
 	import ArrowButton from "./ArrowButton.svelte";
+
 	export let width;
 	export let height;
 
@@ -11,34 +11,24 @@
 		let run = true;
 		while (run) {
 			let endColumnIndex = startColumnIndex + width;
-			console.log("tre");
 			run = false;
-			checkBlock: for(let block of grid.blocks) {
-				console.log("here");
+			for(let block of grid.blocks) {
 				if (block.rowIndex == rowIndex) {
-					console.log("there is a block on this row");
-					
 					if (endColumnIndex > block.startColumnIndex && startColumnIndex <= block.endColumnIndex ) {
-						console.log("there is a block on this row and column");
 						startColumnIndex++;
 						run = true;
-					}
-				}
-			}
-		}
+					};
+				};
+			};
+		};
 		return startColumnIndex;
-	}
+	};
 
-	export let name;
 	let w = Number(width);
 	let h = Number(height);
 	let y = Number(grid.rowIndex);
 	let x = checkX(Number(grid.columnIndex), y, w);
 	const end = x+w;
-
-	
-	// while (grid.blocks.includes(block => block.rowIndex == y && block.startColumnIndex == x)) {
-	// }
 
 	grid.columnIndex = grid.columnIndex = end;
 
@@ -52,19 +42,16 @@
 			 grid.blocks.push(block);
 		}
 	}
-	console.log(name || "col",x,y,w,h,"\tblocks", grid.blocks);
-
-	//console.log('startRow: ',Number(y) + 1 ,' startColumn: ',Number(x) + 1, ' endRow: ', Number(y)+1+Number(height), ' endColumn: ', Number(x)+1+Number(width) );
+	console.log("col",x,y,w,h,"\tblocks", grid.blocks);
 
 </script>
 
-<div class="section" style="grid-area: { `${Number(y) + 1}/${Number(x) + 1}/${Number(y)+1+Number(height)}/${Number(x)+1+Number(width)}` } ;">
+<div class="section" style="grid-area: { `${Number(y) + 1}/${Number(x) + 1}/${Number(y)+1+Number(h)}/${Number(x)+1+Number(w)}` } ;">
 	<slot>
 	<div class="up-arrow">
 		<ArrowButton index={y} placing="inner"  id="up" />
 	</div>
-	<p>COLUMN</p>
-	<p>instruktioner</p>
+	<p>Column without content</p>
 	<div class="left-arrow">
 		<ArrowButton index={x} placing="inner" id="left" />
 	</div>
@@ -78,7 +65,7 @@
 </div>
 
 <style>
-    h1 {
+	p {
         color: darkred;
     }
     .section {

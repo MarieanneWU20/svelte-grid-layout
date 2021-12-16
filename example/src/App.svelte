@@ -4,6 +4,7 @@
 
 <main>
     <Grid>
+        <Row/>
         <Row>
             <Column height="3" width="4"><p>Test 1 från App</p></Column>
             <Column height="2" width="1"><p>Test 2 från App</p></Column>
@@ -15,7 +16,7 @@
             <Column height="1" width="1"><p>Test 6 från App</p></Column>
         </Row>
         <Row>
-            <Column height="1" width="2" name="test" />
+            <Column height="1" width="2" />
             <Column height="1" width="1" />
             <Column height="1" width="1" />
         </Row>
