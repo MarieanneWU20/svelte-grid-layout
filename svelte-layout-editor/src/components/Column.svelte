@@ -9,10 +9,12 @@
 </script>
 
 <div class="section" style="grid-area: { `${Number(rowIndex) + 1}/${Number(columnIndex) + 1}/${Number(rowIndex)+1+Number(height)}/${Number(columnIndex)+1+Number(width)}` } ;">
+	<slot>
 	<div class="up-arrow">
 		<ArrowButton index={rowIndex} placing="inner"  id="up" />
 	</div>
-	<slot><h1>COLUMN</h1></slot>
+	<h1>COLUMN</h1>
+	<p>instruktioner</p>
 	<div class="left-arrow">
 		<ArrowButton index={columnIndex} placing="inner" id="left" />
 	</div>
@@ -22,6 +24,7 @@
 	<div class="down-arrow">
 		<ArrowButton index={rowIndex} placing="inner" id="down" />
 	</div>
+	</slot>
 </div>
 
 <style>
