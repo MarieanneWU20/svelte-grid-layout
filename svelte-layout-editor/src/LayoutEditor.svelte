@@ -1,11 +1,7 @@
 <script>
-	import { onMount, setContext } from "svelte";
+	import { setContext } from "svelte";
 	import ArrowButton from "./components/ArrowButton.svelte";
-	import { gridDataStore, calculateRows, calculateColumns } from "./store/gridDataStore";
-
-	// onMount(() => {
-	// 	$gridDataStore = { rows: [{ columns: [{}, {}] }] };
-	// });
+	
 	setContext("grid", {
 		rowIndex: -1,
 		columnIndex: 0,
@@ -29,15 +25,15 @@
 			<slot ></slot>
 	  	</div>
 	  	<div class="right-arrow">
-		 	{#if calculateRows() < 5}
+		 	<!-- {#if calculateRows() < 5} -->
 				<ArrowButton index=N/A placing="outer" id="right"/>
-		 	{/if}
+		 	<!-- {/if} -->
 	  	</div>
 	</div>
 	<div class="down-arrow">
-	  	{#if calculateColumns() < 5}
+	   	<!-- {#if calculateColumns() < 5} -->
 		  	<ArrowButton index=N/A placing="outer" id="down"/>
-		{/if}
+		<!-- {/if} -->
 	</div>
  </div>
 
