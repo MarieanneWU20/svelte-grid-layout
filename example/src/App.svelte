@@ -4,21 +4,15 @@
 
 <main>
     <Grid>
-        <Row/>
         <Row>
-            <Column height="3" width="4"><p>Test 1 från App</p></Column>
-            <Column height="2" width="1"><p>Test 2 från App</p></Column>
-            <Column height="1" width="1"><p>Test 3 från App</p></Column>
+            <Column height="1" width="4"><h1>HEADER</h1></Column>
         </Row>
         <Row>
-            <Column height="1" width="1"><p>Test 4 från App</p></Column>
-            <Column height="2" width="2"><p>Test 5 från App</p></Column>
-            <Column height="1" width="1"><p>Test 6 från App</p></Column>
+            <Column height="2" width="1"><h3>MENU</h3></Column>
+            <Column height="2" width="3"><h2>CONTENT</h2></Column>
         </Row>
         <Row>
-            <Column height="1" width="2" />
-            <Column height="1" width="1" />
-            <Column height="1" width="1" />
+            <Column height="1" width="4"><p>footer</p></Column>
         </Row>
     </Grid>
 </main>
