@@ -42,7 +42,7 @@ height | number | Cell (row) height
 ## Demo
 [Link to example](./example)
 
-## Future features
+## Future development
 The goal for **Svelte Layout Editor** is a tool that gives the user a graphical interface to create a page template for applications built with Svelte. 
 This will be possible through arrow-buttons that lets the user add rows or columns and resize individual columns.
 Other possible upcomming features are: drag and drop, change the spacing between columns and animation for smooth transitions.
