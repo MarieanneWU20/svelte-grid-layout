@@ -7,27 +7,28 @@
 
 	const grid = getContext("grid");
 
-	const checkX = (startColumnIndex, rowIndex, width) => {
+	const checkX = (startColumn, startRow, width) => {
 		let run = true;
 		while (run) {
-			let endColumnIndex = startColumnIndex + width;
+			let endColumn = startColumn + width;
+			let endRow = startRow+h+1;
+			console.log('endColumn: ', endColumn,'endRow: ', endRow)
 			run = false;
 			for(let block of grid.blocks) {
-				if (block.rowIndex == rowIndex) {
-					if (endColumnIndex > block.startColumnIndex && startColumnIndex <= block.endColumnIndex ) {
-						startColumnIndex++;
-						run = true;
-					};
+				
+				if ( startRow+1 > block.startRow && block.endRow > startRow ) {
+						console.log('1')
+						y = block.endRow - 1;
 				};
 			};
 		};
-		return startColumnIndex;
+		return startColumn;
 	};
 
 	let w = Number(width);
 	let h = Number(height);
 	let y = Number(grid.rowIndex);
-	let x = checkX(Number(grid.columnIndex), y, w);
+	let x = checkX(Number(grid.columnIndex), y, w,h);
 	const end = x+w;
 
 	grid.columnIndex = grid.columnIndex = end;
@@ -35,18 +36,19 @@
 	if (h > 1) {
 		for(let nextRow=1; nextRow<h; nextRow++) {
 			const block = { 
-				rowIndex: y+nextRow,
-				startColumnIndex: x,
-				endColumnIndex: x+w-1
+				startRow: y+nextRow,
+				endRow: y+nextRow+h,
+				startColumn: x,
+				endColumn: x+w-1
 			 }
 			 grid.blocks.push(block);
 		}
 	}
-	console.log("col",x,y,w,h,"\tblocks", grid.blocks);
+	console.log("grid-area",y + 1,x + 1,y + h + 1,x + w + 1);
 
 </script>
 
-<div class="section" style="grid-area: { `${Number(y) + 1}/${Number(x) + 1}/${Number(y)+1+Number(h)}/${Number(x)+1+Number(w)}` } ;">
+<div class="section" style="grid-area: { `${y + 1}/${x + 1}/${y + 1 + h}/${x + 1 + w}` } ;">
 	<slot>
 	<div class="up-arrow">
 		<ArrowButton index={y} placing="inner"  id="up" />
