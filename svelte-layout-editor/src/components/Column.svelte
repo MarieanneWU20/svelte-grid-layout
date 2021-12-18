@@ -11,13 +11,15 @@
 		let run = true;
 		while (run) {
 			let endColumn = startColumn + width;
-			// console.log('endColumn: ', endColumn)
+			let endRow = startRow+h+1;
+			console.log('endColumn: ', endColumn,'endRow: ', endRow)
 			run = false;
 			for(let block of grid.blocks) {
-				if (block.endRow > startRow && block.startColumn > startColumn) {
-					y++;
-				};
 				
+				if ( startRow+1 > block.startRow && block.endRow > startRow ) {
+						console.log('1')
+						y = block.endRow - 1;
+				};
 			};
 		};
 		return startColumn;
@@ -26,7 +28,7 @@
 	let w = Number(width);
 	let h = Number(height);
 	let y = Number(grid.rowIndex);
-	let x = checkX(Number(grid.columnIndex), y, w);
+	let x = checkX(Number(grid.columnIndex), y, w,h);
 	const end = x+w;
 
 	grid.columnIndex = grid.columnIndex = end;
