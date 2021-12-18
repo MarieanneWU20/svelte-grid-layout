@@ -21,14 +21,14 @@
 	  width: 100%;
 	  height: auto;
 	}
-	.row {
+	/* .row {
 	  padding: 0 20px;
-	}
+	} */
 	.container {
 	  padding: 10px;
 	  background-color: #edf1f7;
 	  /* TODO: Remove border? It's not nice if Grid is nested inside of column... */
-	  border: 1px solid #3d5f99;
+	  /* border: 1px solid #3d5f99; */
 	  min-height: 50vh;
 	  display: grid;
 	  grid-auto-columns: 1fr 1fr;

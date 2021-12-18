@@ -59,13 +59,13 @@
 
 	  .section{
 		 border-radius: 25px;
-		 padding: 15px;
+		 /* padding: 15px; */
 	 	}
 	}
 	@media screen and (min-width: 768px) {
 	  	.section{
 		 border-radius: 30px;
-		 padding: 20px;
+		 /* padding: 10px; */
 		}
 	}
 </style>
