@@ -5,13 +5,9 @@
 
 	grid.rowIndex = grid.rowIndex+1;
 	grid.columnIndex = 0;
-
 </script>
 
-<slot><p>Row without columns</p></slot>
+<slot/>
     
 <style>
-    p {
-        color: darkred;
-    }
 </style>
