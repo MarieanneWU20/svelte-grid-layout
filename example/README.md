@@ -1,4 +1,7 @@
 # Demo example
+## Description 
+This is a simple example of how you can use [**Svelte Layout Editor**](https://github.com/WiviWonderWoman/svelte-layout-editor#readme). 
+  
 ## Get started
 Install dependencies...
 ```bash
