@@ -9,7 +9,7 @@
         </Row>
         <Row>
             <Column height="2" width="1"><h3>MENU</h3></Column>
-            <Column height="5" width="3"><h2>CONTENT</h2></Column>
+            <Column height="5" width="3"><h2>CONTENT</h2></Column>    
         </Row>
         <Row>
             <Column height="1" width="4"><p>footer</p></Column>
@@ -19,9 +19,7 @@
 
 <style>
     main {
-        width: 90%;
-        text-align: center;
-        margin: 0 auto;
+        width: auto;
     }
     @media (min-width: 640px) {
         main {
