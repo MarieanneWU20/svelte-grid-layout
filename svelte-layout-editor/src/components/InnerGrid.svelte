@@ -1,4 +1,5 @@
 <script>
+
 	import { setContext } from "svelte";
 	
 	setContext("grid", {
@@ -20,7 +21,6 @@
 	  height: auto;
 	}
 	.container {
-	  padding: 10px;
 	  background-color: #edf1f7;
 	  /*border: 1px solid #3d5f99;*/
 	  min-height: 50vh;
@@ -31,14 +31,12 @@
 	}
 	@media screen and (min-width: 480px) {
 	  .container {
-		 padding: 15px;
 		 gap: 1rem 1rem;
 		 min-height: 75vh;
 	}
 }
 	@media screen and (min-width: 768px) {
 	  .container {
-		 padding: 25px;
 		 gap: 1.5rem 1.5rem;
 		 min-height: 100vh;
 	}
