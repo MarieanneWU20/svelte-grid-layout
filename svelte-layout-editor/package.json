@@ -1,5 +1,5 @@
 {
-  "name": "svelte-layout-editor",
+  "name": "svelte-grid-layout",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WiviWonderWoman/svelte-layout-editor.git"
+    "url": "git+https://github.com/WiviWonderWoman/svelte-grid-layout.git"
   },
   "author": "Marie Eriksson, Wivianne Grapenholt",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/WiviWonderWoman/svelte-layout-editor/issues"
+    "url": "https://github.com/WiviWonderWoman/svelte-grid-layout/issues"
   },
-  "homepage": "https://github.com/WiviWonderWoman/svelte-layout-editor#readme",
+  "homepage": "https://github.com/WiviWonderWoman/svelte-grid-layout#readme",
   "dependencies": {
     "svelte": "^3.44.2"
   }
