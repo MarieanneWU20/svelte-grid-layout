@@ -1,6 +1,5 @@
 <script>
 	import { getContext } from 'svelte';
-	import ArrowButton from "./ArrowButton.svelte";
 
 	export let width;
 	export let height;
@@ -49,27 +48,10 @@
 </script>
 
 <div class="section" style="grid-area: { `${y + 1}/${x + 1}/${y + 1 + h}/${x + 1 + w}` } ;">
-	<slot>
-	<div class="up-arrow">
-		<ArrowButton index={y} placing="inner"  id="up" />
-	</div>
-	<p>Column without content</p>
-	<div class="left-arrow">
-		<ArrowButton index={x} placing="inner" id="left" />
-	</div>
-	<div class="right-arrow">
-		<ArrowButton index={x} placing="inner" id="right" />
-	</div>
-	<div class="down-arrow">
-		<ArrowButton index={y} placing="inner" id="down" />
-	</div>
-	</slot>
+	<slot />
 </div>
 
 <style>
-	p {
-        color: darkred;
-    }
     .section {
 		 width: auto;
 		 height: auto;
@@ -85,25 +67,6 @@
 		 background-color: #ffffff;
 		 text-align: center;
 		 vertical-align: middle;
-	 }
-	 .section>.up-arrow {
-		 justify-content: center;
-		 height: 25px;
-	 }
-	 .section>.left-arrow {
-		 float: left;
-		 width: 25px;
-		 height: 25px;
-	 }
-	 .section>.right-arrow {
-		 float: right;
-		 width: 25px;
-		 height: 45px;
-	 }
-	 .section>.down-arrow {
-		 justify-content: center;
-		 height: 25px;
-		 margin-top: 20%;
 	 }
 	 @media screen and (min-width: 480px) {
 

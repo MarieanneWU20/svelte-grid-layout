@@ -8,10 +8,7 @@
 
 </script>
 
-<slot><p>Row without columns</p></slot>
+<slot />
     
 <style>
-    p {
-        color: darkred;
-    }
 </style>
