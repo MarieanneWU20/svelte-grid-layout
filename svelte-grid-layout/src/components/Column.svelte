@@ -11,12 +11,10 @@
 		while (run) {
 			let endColumn = startColumn + width;
 			let endRow = startRow+h+1;
-			console.log('endColumn: ', endColumn,'endRow: ', endRow)
 			run = false;
 			for(let block of grid.blocks) {
 				
 				if ( startRow+1 > block.startRow && block.endRow > startRow ) {
-						console.log('1')
 						y = block.endRow - 1;
 				};
 			};
@@ -43,8 +41,6 @@
 			 grid.blocks.push(block);
 		}
 	}
-	console.log("grid-area",y + 1,x + 1,y + h + 1,x + w + 1);
-
 </script>
 
 <div class="section" style="grid-area: { `${y + 1}/${x + 1}/${y + 1 + h}/${x + 1 + w}` } ;">
