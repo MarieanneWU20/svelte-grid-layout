@@ -11,7 +11,7 @@
  <div class="editor">
 	<div class="row">
 	  	<div class="container">
-			<slot ></slot>
+			<slot/>
 	  	</div>
 	</div>
  </div>
@@ -27,7 +27,6 @@
 	.container {
 	  padding: 10px;
 	  background-color: #edf1f7;
-	  /* TODO: Remove border? It's not nice if Grid is nested inside of column... */
 	  border: 1px solid #3d5f99;
 	  min-height: 50vh;
 	  display: grid;
