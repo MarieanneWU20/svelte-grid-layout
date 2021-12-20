@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WiviWonderWoman/svelte-grid-layout.git"
+    "url": "git+https://github.com/MarieanneWU20/svelte-grid-layout.git"
   },
   "author": "Marie Eriksson, Wivianne Grapenholt",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/WiviWonderWoman/svelte-grid-layout/issues"
+    "url": "https://github.com/MarieanneWU20/svelte-grid-layout/issues"
   },
-  "homepage": "https://github.com/WiviWonderWoman/svelte-grid-layout#readme",
+  "homepage": "https://github.com/MarieanneWU20/svelte-grid-layout#readme",
   "dependencies": {
     "svelte": "^3.44.2"
   }
