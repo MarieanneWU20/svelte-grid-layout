@@ -18,8 +18,6 @@ npm install svelte-grid-layout
 ___________________________________________________________________
 ## Dependencies
 ### [svelte ^3.44.2](https://www.npmjs.com/package/svelte)
-
-#### Also checkout [examples README.md](https://github.com/MarieanneWU20/svelte-grid-layout-example#readme)
 ___________________________________________________________________
 
 ## Import & Use component
