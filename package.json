@@ -1,6 +1,6 @@
 {
   "name": "svelte-grid-layout",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "./svelte-grid-layout/index.js",
   "scripts": {
