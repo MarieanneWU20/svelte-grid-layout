@@ -17,7 +17,7 @@
     "template",
     "svelte component"
   ],
-  "author": "Marie Eriksson, Wivianne Grapenholt",
+  "author": "Marie Eriksson <erma20xg@student.ju.se> (https://github.com/kerstinmarie) , Wivianne Grapenholt <w.grapenholt@gmail.com> (https://github.com/WiviWonderWoman)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MarieanneWU20/svelte-grid-layout/issues"
